@@ -1,0 +1,605 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+{
+    <script type="text/javascript">
+        localStorage.setItem("pageName", "@ViewBag.PageName");
+        localStorage.setItem("menuId", "@ViewBag.MenuId");
+    </script>
+
+    <style>
+        .file-section {
+            background-color: #eef5f2;
+            border: 2px solid #b2c9bb;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 1px;
+        }
+
+            .file-section h4 {
+                margin-top: 0;
+                color: #2f4f4f;
+            }
+
+        .file-info {
+            margin-top: 1px;
+        }
+
+        .btn-view {
+            margin-top: 5px;
+        }
+
+        .k-grid td.ColoredClass {
+            background-color: #73c6b6; /* Light yellow */
+        }
+
+        .custom-file-button {
+            display: inline-block;
+            /*padding: 8px 20px;*/
+            background-color: #e9e9e9;
+            border: 1px solid #3699ff;
+            cursor: pointer;
+        }
+
+            /* Optional styling to make it look like a button */
+            .custom-file-button:hover {
+                background-color: #dcdcdc;
+            }
+
+            .custom-file-button:active {
+                background-color: #bcbcbc;
+            }
+
+        i.fa.fa-solid.fa-upload {
+            color: #007385;
+        }
+
+    </style>
+}
+@{
+    var pageId = ViewBag.PageName + "-" + ViewBag.MenuId;
+    var divToolbarId = "divtoolbar" + pageId;
+    var toolbarId = "toolbar" + pageId;
+    var tblMasterId = "tbl" + pageId;
+
+    var tblChildId = "tblChild" + pageId;
+    var tblChildId1 = "tblChild1" + pageId;
+    var tblChildId2 = "tblChild2" + pageId;
+    var tblChildId3 = "tblChild3" + pageId;
+    var tblChildId4 = "tblChild4" + pageId;
+
+
+    var formId = "form" + pageId;
+    var divDetailsId = "divDetails" + pageId;
+}
+
+<div class="d-flex flex-column-fluid" id="@pageId">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;">
+                    <div id="@divToolbarId">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="@toolbarId">
+                                    <div class="btn btn-sm fw-bold btn-secondary toolbar-dom" id="btnNewAdd">
+                                        <i class="fa fa-plus"></i>&nbsp;New Add
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-primary toolbar-dom" style="border-radius: 0px;" id="btnEditList">
+                                        <i class="fa fa-list"></i>&nbsp;Temp List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-secondary toolbar-dom" style="border-radius: 0px;" id="btnApprovedList">
+                                        <i class="fa fa-list"></i>&nbsp; Approved List
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="@tblMasterId"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="form" id="@formId">
+                        <input type="hidden" id="IngredientID" name="IngredientID" value="-1111" />
+
+                        <div class="card-body" id="@divDetailsId" style="display:none">
+                            <div class="k-block mb-1" style="padding: 5px !important; border-radius: 0px !important;">
+                                <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px;">
+                                    <i class="fa fa-cogs text-info text-primary">
+                                    </i> &nbsp; General Information
+                                </h6>
+                            </div>
+
+                            <div class="k-block p-4" style="border:1px solid #008093; border-radius:0px !important;">
+                                <div class="row" style="padding-bottom:10px;">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Ingredient Code</label>
+                                            <input type="text" class="form-control font-weight-bold" id="IngredientCode" name="IngredientCode" disabled /> 
+                                            <span class="form-text text-muted IngredientCode">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Ingredient Name</label>
+                                            <input type="text" class="form-control" placeholder="" id="IngredientName" name="IngredientName" />
+                                            <span class="form-text text-muted IngredientName">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Ingredient Description</label>
+                                            <input type="text" class="form-control" placeholder="" id="IngredientDescription" name="IngredientDescription" />
+                                            <span class="form-text text-muted IngredientDescription">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Natural Index (ISO 16128) %</label>
+                                            <input type="text" class="form-control" placeholder="" id="NaturalIndexPct" name="NaturalIndexPct" />
+                                            <span class="form-text text-muted NaturalIndexPct">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Natural Origin Inxed (ISO 16128) %</label>
+                                            <input type="text" class="form-control" placeholder="" id="NaturalOriginIndexPct" name="NaturalOriginIndexPct" />
+                                            <span class="form-text text-muted NaturalOriginIndexPct">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Organic Index (ISO 16128) %</label>
+                                            <input type="text" class="form-control" placeholder="" id="OrganicIndexPct" name="OrganicIndexPct" />
+                                            <span class="form-text text-muted OrganicIndexPct">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Organic Origin Index (ISO 16128) %</label>
+                                            <input type="text" class="form-control" placeholder="" id="OrganicOriginIndexPct" name="OrganicOriginIndexPct" />
+                                            <span class="form-text text-muted OrganicOriginIndexPct">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4 d-none">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">MOQ (minimal order quantity) in kg</label>
+                                            <input type="text" class="form-control" placeholder="" id="MOQInKg" name="MOQInKg" />
+                                            <span class="form-text text-muted MOQInKg">required.</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Status</label>
+                                            <input type="text" kendorole="combobox" id="IngredientStatus" name="IngredientStatus" style="width:100%;" />
+                                            <span class="form-text text-muted IngredientStatus">required.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label text-lg-right" style="padding: 0px !important;">Ingredient Manufacturer</label> 
+                                            <input id="cmbIngredientManufacturerID" name="cmbIngredientManufacturerID" />
+                                            <span class="form-text text-muted cmbIngredientManufacturerID">required.</span> 
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4" style="margin-top:18px;">
+                                        <div class="form-group">
+                                            <div class="form-inner10">
+                                                <label class="left-col col-form-label text-lg-right">Is Fragrance?</label>
+                                                <div class="right-col">
+                                                    <input type="checkbox" id="IsFragrance" checked="checked" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4" style="margin-top:18px;">
+                                        <div class="form-group">
+                                            <div class="form-inner16">
+                                                <label class="left-col col-form-label text-lg-right">Is Allergen Applicable?</label>
+                                                <div class="right-col">
+                                                    <input type="checkbox" id="IsAllergenApplicable" checked="checked" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="k-block" style="padding: 5px !important; border-radius: 0px !important; margin-top:20px; height:30px !important;">
+                                        <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px; text-align:center;">
+                                            <i class="fa fa-flask text-info text-danger" aria-hidden="true"></i> &nbsp; INCI Breakdown
+                                        </h6>
+                                    </div>
+                                    <div id="@tblChildId"></div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="k-block" style="padding: 5px !important; border-radius: 0px !important; margin-top:20px; height:30px !important;">
+                                        <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px; text-align:center;">
+                                            <i class="fa fa-ban text-info text-danger" aria-hidden="true"></i> &nbsp; Allergens Breakdown
+                                        </h6>
+                                    </div>
+                                    <div id="@tblChildId1"></div>
+                                </div>
+                            </div>
+
+                            <div class="k-block" style="padding: 5px !important; border-radius: 0px !important; margin-top:20px;">
+                                <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px; text-align:center;">
+                                    <i class="fa fa-user text-info text-danger" aria-hidden="true"></i> &nbsp; Supplier Information
+                                </h6>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="@tblChildId2"></div>
+                                </div>
+                            </div>
+                            <div class="k-block" style="padding: 5px !important; border-radius: 0px !important; margin-top:20px;">
+                                <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px; text-align:center;">
+                                    <i class="fa fa-globe text-info text-danger" aria-hidden="true"></i> &nbsp; Regulatory Restrictions by Country
+                                </h6>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="@tblChildId3"></div>
+                                </div>
+                            </div>
+
+                            <div class="k-block mt-2">
+                                <div class="k-header font-weight-bolder text-primary">
+                                    <span class="svg-icon svg-icon-danger svg-icon-md"><i class="fa fa-upload text-info text-danger"></i></span>
+                                    &nbsp; Document Upload
+                                </div>
+                                <div class="row p-4">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">SDS</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="SDS" name="SDS" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputSDSFilePath" style="display: none;" multiple="">
+                                                        <label for="inputSDSFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="SDS" class="k-button k-button-icontext k-success" id="btnSDSFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="SDS_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvSDS_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">COA/Specs </label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="COA" name="COA" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputCOAFilePath" style="display: none;" multiple="">
+                                                        <label for="inputCOAFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="COA" class="k-button k-button-icontext k-success" id="btnCOAFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="COA_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvCOA_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">INCI Breakdown </label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="INCI" name="INCI" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputINCIFilePath" style="display: none;" multiple="">
+                                                        <label for="inputINCIFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="INCI" class="k-button k-button-icontext k-success" id="btnINCIFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="INCI_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvINCI_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">IFRA</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="IFRA" name="IFRA" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputIFRAFilePath" style="display: none;" multiple="">
+                                                        <label for="inputIFRAFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="IFRA" class="k-button k-button-icontext k-success" id="btnIFRAFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="IFRA_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvIFRA_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Allergen Statements</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="AllergenStatement" name="AllergenStatement" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputAllergenStatementFilePath" style="display: none;" multiple="">
+                                                        <label for="inputAllergenStatementFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="AllergenStatement" class="k-button k-button-icontext k-success" id="btnAllergenStatementFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="AllergenStatement_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvAllergenStatement_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Regulatory Information</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="Regulatory" name="Regulatory" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputRegulatoryFilePath" style="display: none;" multiple="">
+                                                        <label for="inputRegulatoryFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="Regulatory" class="k-button k-button-icontext k-success" id="btnRegulatoryFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="Regulatory_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvRegulatory_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Impurity Statement</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="Impurity" name="Impurity" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputImpurityFilePath" style="display: none;" multiple="">
+                                                        <label for="inputImpurityFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="Impurity" class="k-button k-button-icontext k-success" id="btnImpurityFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="Impurity_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvImpurity_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">TDS</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="TDS" name="TDS" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputTDSFilePath" style="display: none;" multiple="">
+                                                        <label for="inputTDSFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="TDS" class="k-button k-button-icontext k-success" id="btnTDSFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="TDS_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvTDS_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">ISO 16128 Statement</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="ISO16128Statement" name="ISO16128Statement" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputISO16128StatementFilePath" style="display: none;" multiple="">
+                                                        <label for="inputISO16128StatementFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="ISO16128Statement" class="k-button k-button-icontext k-success" id="btnISO16128StatementFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="ISO16128Statement_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvISO16128Statement_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Cosmos Natural/ Organic Statement</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="Cosmos" name="Cosmos" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputCosmosFilePath" style="display: none;" multiple="">
+                                                        <label for="inputCosmosFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="Cosmos" class="k-button k-button-icontext k-success" id="btnCosmosFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="Cosmos_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvCosmos_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Halal Cerificate</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="HalalCerificate" name="HalalCerificate" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputHalalCerificateFilePath" style="display: none;" multiple="">
+                                                        <label for="inputHalalCerificateFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="HalalCerificate" class="k-button k-button-icontext k-success" id="btnHalalCerificateFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="HalalCerificate_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvHalalCerificate_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Animal Test Statement</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="Animal" name="Animal" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputAnimalFilePath" style="display: none;" multiple="">
+                                                        <label for="inputAnimalFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="Animal" class="k-button k-button-icontext k-success" id="btnAnimalFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="Animal_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvAnimal_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Palm Status</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="Palm" name="Palm" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputPalmFilePath" style="display: none;" multiple="">
+                                                        <label for="inputPalmFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                        <div type="button" title="Palm" class="k-button k-button-icontext k-success" id="btnPalmFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="Palm_FILE_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvPalm_FILE_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <label class="col-form-label" style="display: block; padding-left: 0px !important;">Clinical Data</label>
+                                                <div style="width: calc(100% - 150px); margin-right: 5px;float: left;">
+                                                    <input type="text" class="form-control" placeholder="" id="ClinicalData" name="ClinicalData" disabled="">
+                                                </div>
+                                                <div style="">
+                                                    <div class="file-input-container" style="float:left; margin-right: 5px;">
+                                                        <input type="file" id="inputClinicalDataFilePath" style="display: none;" multiple="">
+                                                        <label for="inputClinicalDataFilePath" class="custom-file-button" style="padding: 5px 5px 2px 8px !important; margin-bottom: 0px !important;">
+                                                            <i class="fa fa-solid fa-upload text-info text-primary"></i>
+                                                        </label>
+                                                       
+
+                                                        <div type="button" title="ClinicalData" class="k-button k-button-icontext k-success " id="btnClinicalDataFile"><i class="fa fa-solid fa-download text-info text-primary" aria-hidden="true" style="margin-right: 3px;"></i></div>
+                                                    </div>
+                                                    <div style="float:left; width:100px;">
+                                                        <canvas src="ClinicalData_PATH" class="img-canvus-size" style="max-height:30px !important; border: 0px solid; width: 100px;" id="canvClinicalData_PATH"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divItemWindow" style="display:none;">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="@tblChildId4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6"> </div>
+                                    <div class="col-lg-6 text-lg-right">
+                                        <div class="btn btn-sm btn-pdlbacktolist btn-custom120 btn-secondary-cs" id="btnBackToList">Back to List</div>
+                                        <div class="btn btn-sm btn-pdlsave btn-custom" id="btnSave"> <i class="fa fa-save"></i> Save</div>
+                                        <div class="btn btn-sm btn-pdlSaveForApprove btn-custom170" id="btnApproved"><i class="fa fa-retweet"></i> Save & Approved</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section section_footer
+{
+    <script src="~/Chem/Setting/IngredientMaster.js?version=@version"></script>
+}
+
+
+

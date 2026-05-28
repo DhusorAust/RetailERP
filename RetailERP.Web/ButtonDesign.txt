@@ -1,0 +1,35 @@
+<div class="card-footer">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn btn-sm btn-pdlbacktolist btn-custom120 btn-secondary-cs" id="btnBackToList">Back to List</div>
+            <div class="btn btn-sm btn-pdlsave btn-custom" id="btnSave"> <i class="fa fa-save"></i> Save</div>
+            <div class="btn btn-sm btn-pdlSaveForApprove btn-custom230" id="btnSaveForApprove"><i class="fa fa-retweet"></i> Save & Send To Approved</div>
+            <div class="btn btn-sm btn-pdlSaveForApprove btn-custom170" id="btnSaveForApprove"><i class="fa fa-retweet"></i> Save & Approved</div>
+            <div class="btn btn-sm btn-pdlapproved btn-custom120" id="btnApproved"><i class="fa fa-check"></i> Approved</div>
+            <div class="btn btn-sm btn-pdlapproved btn-custom180" id="btnAcknowledgement"><i class="fa fa-check"></i> Acknowledgement</div>
+            <div class="btn btn-sm btn-pdlreject btn-custom110" id="btnReject"><i class="fa fa-ban"></i> Reject</div>
+            <div class="btn btn-sm btn-pdlrevise btn-custom110" id="btnRevise"><i class="fa fa-reply-all"></i> Revise</div>
+            <div class="btn btn-sm btn-pdlmakecopy btn-custom140" id="btnMakeCopy"><i class="fa fa-clone"></i> Make Copy</div>
+            <div class="btn btn-sm btn-pdlunlocked btn-custom110" id="btnUnlock"><i class="fa fa fa-unlock"></i> Unlock</div>
+            <div class="btn btn-sm btn-pdlupload btn-custom140" id="btnUpload"><i class="fa fa-upload"></i> File Upload</div>
+            <div class="btn btn-sm btn-pdlexcelexport btn-custom140" id="btnExcel"><i class="fa fa-file-excel"></i> Export Excel</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+https://preview.themeforest.net/item/vixa-industry-factory-wordpress-theme/full_screen_preview/55571591?_ga=2.40751586.1932884597.1733076252-1542686617.1729530583&_gac=1.11862912.1730741750.EAIaIQobChMIwquEuJvDiQMVFDd7Bx15QCEqEAAYASAAEgJoRvD_BwE
+
+https://preview.themeforest.net/item/texmazo-textile-garment-industry-elementor-template-kit/full_screen_preview/39227591?_ga=2.70269136.1932884597.1733076252-1542686617.1729530583&_gac=1.213110304.1730741750.EAIaIQobChMIwquEuJvDiQMVFDd7Bx15QCEqEAAYASAAEgJoRvD_BwE
+
+https://preview.themeforest.net/item/garmen-textile-garment-industry-elementor-template-kit/full_screen_preview/43570284?_ga=2.70193744.1932884597.1733076252-1542686617.1729530583&_gac=1.186985756.1730741750.EAIaIQobChMIwquEuJvDiQMVFDd7Bx15QCEqEAAYASAAEgJoRvD_BwE
+
+https://preview.themeforest.net/item/textilery-textile-garment-industry-elementor-template-kit/full_screen_preview/33246058?_ga=2.32897534.1932884597.1733076252-1542686617.1729530583&_gac=1.241297078.1730741750.EAIaIQobChMIwquEuJvDiQMVFDd7Bx15QCEqEAAYASAAEgJoRvD_BwE
+
+https://preview.themeforest.net/item/textica-textile-fabric-industry-html-template/full_screen_preview/52374773?_ga=2.264707407.1932884597.1733076252-1542686617.1729530583&_gac=1.241812790.1730741750.EAIaIQobChMIwquEuJvDiQMVFDd7Bx15QCEqEAAYASAAEgJoRvD_BwE
+
+https://preview.themeforest.net/item/fesshion-fashion-clothing-elementor-template-kit/full_screen_preview/37547605?_ga=2.229511388.1932884597.1733076252-1542686617.1729530583&_gac=1.16597890.1730741750.EAIaIQobChMIwquEuJvDiQMVFDd7Bx15QCEqEAAYASAAEgJoRvD_BwE

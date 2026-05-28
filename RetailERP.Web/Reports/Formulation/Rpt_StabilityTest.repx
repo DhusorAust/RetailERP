@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="22.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="XtraReport" Margins="50, 48, 30, 20" PaperKind="A4" PageWidth="827" PageHeight="1169" Version="22.2" DataMember="spRpt_StabilityTest" DataSource="#Ref-0">
+  <Extensions>
+    <Item1 Ref="2" Key="VSReportExtInfo" Value=".repx" />
+  </Extensions>
+  <Parameters>
+    <Item1 Ref="5" Description="Formulation:" ValueSourceSettings="#Ref-3" ValueInfo="0" AllowNull="true" Name="stabilityID" Type="#Ref-4" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="6" ControlType="TopMarginBand" Name="TopMargin" HeightF="30" />
+    <Item2 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="25" Borders="All">
+      <SortFields>
+        <Item1 Ref="8" FieldName="RowSLNo" />
+      </SortFields>
+      <Controls>
+        <Item1 Ref="9" ControlType="XRTable" Name="xrTable2" SizeF="726.999939,25" LocationFloat="0,0" Font="Times New Roman, 8pt" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="10" ControlType="XRTableRow" Name="xrTableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="11" ControlType="XRTableCell" Name="xrTableCell9" Weight="1.1244977901972424" Multiline="true" Text="Parameter Name" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="12" EventName="BeforePrint" PropertyName="Text" Expression="[ParameterName]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="13" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="14" ControlType="XRTableCell" Name="xrTableCell11" Weight="0.87550220980275772" Multiline="true" Text="T0 " TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="15" EventName="BeforePrint" PropertyName="Text" Expression="[T0]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="16" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="17" ControlType="XRTableCell" Name="xrTableCell15" Weight="1" Multiline="true" Text="T1 (4 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="18" EventName="BeforePrint" PropertyName="Text" Expression="[T1]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="19" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="20" ControlType="XRTableCell" Name="xrTableCell16" Weight="1" Multiline="true" Text="T2 (8 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="21" EventName="BeforePrint" PropertyName="Text" Expression="[T2]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="22" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="23" ControlType="XRTableCell" Name="xrTableCell17" Weight="1" Multiline="true" Text="T3 (12 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="24" EventName="BeforePrint" PropertyName="Text" Expression="[T3]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="25" UseFont="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="26" ControlType="XRTableCell" Name="xrTableCell18" Weight="1" Multiline="true" Text="T4 (16 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="27" EventName="BeforePrint" PropertyName="Text" Expression="[T4]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="28" UseFont="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="29" ControlType="XRTableCell" Name="xrTableCell19" Weight="1" Multiline="true" Text="T5 (20 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="30" EventName="BeforePrint" PropertyName="Text" Expression="[T5]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="31" UseFont="false" UseTextAlignment="false" />
+                </Item7>
+                <Item8 Ref="32" ControlType="XRTableCell" Name="xrTableCell20" Weight="1" Multiline="true" Text="T6 (24 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="33" EventName="BeforePrint" PropertyName="Text" Expression="[T6]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="34" UseFont="false" UseTextAlignment="false" />
+                </Item8>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="35" UseFont="false" UseBorders="false" UseBorderWidth="false" />
+        </Item1>
+      </Controls>
+      <StylePriority Ref="36" UseBorders="false" />
+    </Item2>
+    <Item3 Ref="37" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="20" />
+    <Item4 Ref="38" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="0" />
+    <Item5 Ref="39" ControlType="PageHeaderBand" Name="PageHeader" HeightF="134.166672">
+      <Controls>
+        <Item1 Ref="40" ControlType="XRPageInfo" Name="xrPageInfo1" PageInfo="DateTime" TextFormatString="Print Date : {0:dd-MMM-yy hh:mm:ss tt}" TextAlignment="MiddleRight" SizeF="139.5,26.19445" LocationFloat="587.5,0" Font="Calibri Light, 6.5pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="41" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="42" ControlType="XRTable" Name="table2" SizeF="726.9998,57.8125" LocationFloat="0,67.333374" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="43" ControlType="XRTableRow" Name="tableRow8" Weight="1">
+              <Cells>
+                <Item1 Ref="44" ControlType="XRTableCell" Name="tableCell2" Weight="0.96385538237602764" Multiline="true" Text="Brand Name" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="45" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="46" ControlType="XRTableCell" Name="tableCell16" Weight="0.16064256832753082" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="47" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="48" ControlType="XRTableCell" Name="tableCell15" Weight="2.8755020492964407" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="49" EventName="BeforePrint" PropertyName="Text" Expression="[BrandName]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="50" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="51" ControlType="XRTableCell" Name="tableCell18" Weight="0.96385544904184872" Multiline="true" Text="Date" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="52" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="53" ControlType="XRTableCell" Name="tableCell28" Weight="0.16064256335278176" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="54" UseFont="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="55" ControlType="XRTableCell" Name="tableCell19" Weight="2.8755019876053693" TextFormatString="{0:dd-MMM-yyyy}" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="56" EventName="BeforePrint" PropertyName="Text" Expression="[FormulationDate]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="57" UseFont="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+            <Item2 Ref="58" ControlType="XRTableRow" Name="tableRow9" Weight="1">
+              <Cells>
+                <Item1 Ref="59" ControlType="XRTableCell" Name="tableCell22" Weight="0.96385542322954576" Multiline="true" Text="Product Name" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="60" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="61" ControlType="XRTableCell" Name="tableCell17" Weight="0.16064256533318005" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="62" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="63" ControlType="XRTableCell" Name="tableCell23" Weight="2.8755020114372742" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="64" EventName="BeforePrint" PropertyName="Text" Expression="[ProductName]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="65" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="66" ControlType="XRTableCell" Name="tableCell26" Weight="0.96385539375027307" Multiline="true" Text="Product Type" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="67" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="68" ControlType="XRTableCell" Name="tableCell46" Weight="0.16064257779083932" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="69" UseFont="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="70" ControlType="XRTableCell" Name="tableCell27" Weight="1.8755020284588877" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="71" EventName="BeforePrint" PropertyName="Text" Expression="[ProductTypeName]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="72" UseFont="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="73" ControlType="XRTableCell" Name="tableCell29" Weight="1" Multiline="true" />
+              </Cells>
+            </Item2>
+            <Item3 Ref="74" ControlType="XRTableRow" Name="tableRow10" Weight="1">
+              <Cells>
+                <Item1 Ref="75" ControlType="XRTableCell" Name="tableCell30" Weight="0.96385542322954576" Multiline="true" Text="Fromula Code" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="76" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="77" ControlType="XRTableCell" Name="tableCell20" Weight="0.16064256533318005" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="78" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="79" ControlType="XRTableCell" Name="tableCell31" Weight="0.76394461649291345" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="80" EventName="BeforePrint" PropertyName="Text" Expression="[FormulationCode]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="81" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="82" ControlType="XRTableCell" Name="tableCell32" Weight="1.1115580453156155" Multiline="true" Text="Formula Version" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="83" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="84" ControlType="XRTableCell" Name="tableCell24" Weight="0.16064257356616132" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="85" UseFont="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="86" ControlType="XRTableCell" Name="tableCell33" Weight="0.83935677606258363" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="87" EventName="BeforePrint" PropertyName="Text" Expression="[FormulationVersion]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="88" UseFont="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="89" ControlType="XRTableCell" Name="tableCell34" Weight="0.96385539375027307" Multiline="true" Text="Batch Qty" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="90" UseFont="false" UseTextAlignment="false" />
+                </Item7>
+                <Item8 Ref="91" ControlType="XRTableCell" Name="tableCell47" Weight="0.16064257779083935" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="92" UseFont="false" UseTextAlignment="false" />
+                </Item8>
+                <Item9 Ref="93" ControlType="XRTableCell" Name="tableCell35" Weight="1.0920154909531936" TextFormatString="{0:#,#}" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="94" EventName="BeforePrint" PropertyName="Text" Expression="[BatchQty]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="95" UseFont="false" UseTextAlignment="false" />
+                </Item9>
+                <Item10 Ref="96" ControlType="XRTableCell" Name="tableCell36" Weight="0.698490901870292" Multiline="true" Text="UOM" TextAlignment="MiddleRight" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="97" UseFont="false" UseTextAlignment="false" />
+                </Item10>
+                <Item11 Ref="98" ControlType="XRTableCell" Name="tableCell49" Weight="0.084995635635401884" Multiline="true" Text=":" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="99" UseFont="false" UseTextAlignment="false" />
+                </Item11>
+                <Item12 Ref="100" ControlType="XRTableCell" Name="tableCell37" Weight="1" Multiline="true" TextAlignment="MiddleLeft" Font="Tahoma, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="101" EventName="BeforePrint" PropertyName="Text" Expression="[UnitName]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="102" UseFont="false" UseTextAlignment="false" />
+                </Item12>
+              </Cells>
+            </Item3>
+          </Rows>
+          <StylePriority Ref="103" UseBorders="false" UseBorderWidth="false" />
+        </Item2>
+        <Item3 Ref="104" ControlType="XRLabel" Name="label2" Multiline="true" Text="Stability Test Report" TextAlignment="MiddleCenter" SizeF="726.9998,26.19447" LocationFloat="0,30.6388855" Font="Tahoma, 12pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="105" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="106" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="Cosmetics Chemicals Limited" TextAlignment="MiddleCenter" SizeF="727,30.3611221" LocationFloat="0,0" Font="Tahoma, 16.86pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="107" UseFont="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item5>
+    <Item6 Ref="108" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="59.1666679" Borders="All">
+      <Controls>
+        <Item1 Ref="109" ControlType="XRTable" Name="xrTable1" SizeF="726.999939,50" LocationFloat="0,9.166668" Font="Times New Roman, 11pt, style=Bold" BackColor="MistyRose" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="110" ControlType="XRTableRow" Name="xrTableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="111" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.1244977898704209" Multiline="true" Text="Temparature" TextAlignment="MiddleLeft" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="112" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="113" ControlType="XRTableCell" Name="xrTableCell3" Weight="6.87550221012958" Multiline="true" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="114" EventName="BeforePrint" PropertyName="Text" Expression="[StabilityTestTemperature]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="115" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+            <Item2 Ref="116" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="117" ControlType="XRTableCell" Name="xrTableCell1" Weight="1.1244977901972424" Multiline="true" Text="Parameter Name" TextAlignment="MiddleLeft" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="118" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="119" ControlType="XRTableCell" Name="xrTableCell4" Weight="0.87550220980275772" Multiline="true" Text="T0 " TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="120" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="121" ControlType="XRTableCell" Name="xrTableCell5" Weight="1" Multiline="true" Text="T1 (4 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="122" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="123" ControlType="XRTableCell" Name="xrTableCell6" Weight="1" Multiline="true" Text="T2 (8 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="124" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="125" ControlType="XRTableCell" Name="xrTableCell10" Weight="1" Multiline="true" Text="T3 (12 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="126" UseFont="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="127" ControlType="XRTableCell" Name="xrTableCell12" Weight="1" Multiline="true" Text="T4 (16 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="128" UseFont="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="129" ControlType="XRTableCell" Name="xrTableCell13" Weight="1" Multiline="true" Text="T5 (20 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="130" UseFont="false" UseTextAlignment="false" />
+                </Item7>
+                <Item8 Ref="131" ControlType="XRTableCell" Name="xrTableCell14" Weight="1" Multiline="true" Text="T6 (24 weeks)" TextAlignment="MiddleCenter" Font="Tahoma, 8pt, style=Bold">
+                  <StylePriority Ref="132" UseFont="false" UseTextAlignment="false" />
+                </Item8>
+              </Cells>
+            </Item2>
+          </Rows>
+          <StylePriority Ref="133" UseFont="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" />
+        </Item1>
+      </Controls>
+      <StylePriority Ref="134" UseBorders="false" />
+    </Item6>
+    <Item7 Ref="135" ControlType="GroupFooterBand" Name="GroupFooter1" SnapLinePadding="10,10,10,20,100" HeightF="37.1666451" Borders="All">
+      <Controls>
+        <Item1 Ref="136" ControlType="XRLine" Name="line1" LineWidth="0.5" SizeF="726.81134,2" LocationFloat="2.1887207,35.1666451" BorderWidth="0.5">
+          <StylePriority Ref="137" UseBorderWidth="false" />
+        </Item1>
+        <Item2 Ref="138" ControlType="XRSubreport" Name="subreport1" SizeF="716.999939,23" LocationFloat="6,9.166645">
+          <ParameterBindings>
+            <Item1 Ref="140" ParameterName="stabilityID" Parameter="#Ref-5" />
+          </ParameterBindings>
+        </Item2>
+      </Controls>
+      <StylePriority Ref="141" UseBorders="false" />
+    </Item7>
+  </Bands>
+  <ParameterPanelLayoutItems>
+    <Item1 Ref="142" LayoutItemType="Parameter" Parameter="#Ref-5" />
+  </ParameterPanelLayoutItems>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v22.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0ic3BScHRfU3RhYmlsaXR5VGVzdCI+PFBhcmFtZXRlciBOYW1lPSJAU3RhYmlsaXR5VGVzdE1hc3RlcklEIiBUeXBlPSJEZXZFeHByZXNzLkRhdGFBY2Nlc3MuRXhwcmVzc2lvbiI+KFN5c3RlbS5JbnQzMikoP3N0YWJpbGl0eUlEKTwvUGFyYW1ldGVyPjxQcm9jTmFtZT5zcFJwdF9TdGFiaWxpdHlUZXN0PC9Qcm9jTmFtZT48L1F1ZXJ5PjxRdWVyeSBUeXBlPSJDdXN0b21TcWxRdWVyeSIgTmFtZT0iRm9ybXVsYXRpb25MaXN0Ij48U3FsPnNlbGVjdCBiLlN0YWJpbGl0eVRlc3RNYXN0ZXJJRCxhLkZvcm11bGF0aW9uTWFzdGVySUQsRm9ybXVsYXRpb25Db2RlIGZyb20gcm5kX0Zvcm11bGF0aW9uTWFzdGVyIGENCmlubmVyIGpvaW4gcm5kX1N0YWJpbGl0eVRlc3RNYXN0ZXIgYiBvbiBiLkZvcm11bGF0aW9uTWFzdGVySUQ9YS5Gb3JtdWxhdGlvbk1hc3RlcklEDQp3aGVyZSBhLklzQWN0aXZlPTE8L1NxbD48L1F1ZXJ5PjxSZXN1bHRTY2hlbWE+PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InNwUnB0X1N0YWJpbGl0eVRlc3QiPjxGaWVsZCBOYW1lPSJTdGFiaWxpdHlUZXN0Q2hpbGRJRCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlN0YWJpbGl0eVRlc3RNYXN0ZXJJRCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlN0YWJpbGl0eVRlc3RUZW1wZXJhdHVyZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQYXJhbWV0ZXJOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQwIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQxIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQyIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQzIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQ0IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQ1IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlQ2IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IklzQWN0aXZlIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ3JlYXRlZEJ5IiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ3JlYXRlZERhdGUiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJVcGRhdGVCeSIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlVwZGF0ZWREYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iRm9ybXVsYXRpb25QYXJhbWV0ZXIiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJGb3JtdWxhdGlvbkNvZGUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRm9ybXVsYXRpb25EYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iQnJhbmROYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkZvcm11bGF0aW9uVmVyc2lvbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQcm9kdWN0TmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQcm9kdWN0VHlwZU5hbWUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUHJvZHVjdENhdGVnb3J5TmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQcm9qZWN0TmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJVbml0TmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJCYXRjaFF0eSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iTG9ja1N0YXR1cyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJBcHBlYXJhbmNlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNvbG91ciIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJPZG91ciIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWaXNjb3NpdHkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUEgiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlNHIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjxWaWV3IE5hbWU9IkZvcm11bGF0aW9uTGlzdCI+PEZpZWxkIE5hbWU9IlN0YWJpbGl0eVRlc3RNYXN0ZXJJRCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkZvcm11bGF0aW9uTWFzdGVySUQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJGb3JtdWxhdGlvbkNvZGUiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 Ref="3" ObjectType="DevExpress.XtraReports.Parameters.DynamicListLookUpSettings, DevExpress.Printing.v22.2.Core" DataSource="#Ref-0" DataMember="FormulationList" ValueMember="StabilityTestMasterID" DisplayMember="FormulationCode" SortMember="FormulationCode" SortOrder="Descending" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v22.2" Ref="4" Content="System.Int32" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

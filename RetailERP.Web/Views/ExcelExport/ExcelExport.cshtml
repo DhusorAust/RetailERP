@@ -1,0 +1,295 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+{
+    <script type="text/javascript">
+        localStorage.setItem("pageName", "@ViewBag.PageName");
+        localStorage.setItem("menuId", "@ViewBag.MenuId");
+    </script>
+    <style>
+        legend {
+            width: auto;
+            margin-bottom: 0px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1f497d;
+        }
+
+        fieldset {
+            text-align: left;
+            border: 1px solid #1f497d;
+            padding: 20px;
+        }
+
+        .excel-export-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .excel-export-btn i {
+                font-size: 18px;
+            }
+
+            .excel-export-btn:hover {
+                background-color: #218838;
+            }
+
+     
+        .k-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+            padding: 8px 16px;
+            min-width: 160px;
+            font-weight: 500;
+            margin: 6px;
+        }
+
+        .k-button i {
+            font-size: 16px;
+        }
+
+        .k-grid-checkbox {
+            color: blue !important;
+        }
+
+   
+
+    </style>
+}
+@{
+    var pageId = ViewBag.PageName + "-" + ViewBag.MenuId;
+    var divToolbarId = "divtoolbar" + pageId;
+    var toolbarId = "toolbar" + pageId;
+    var tblMasterId = "tbl" + pageId;
+    var tblChildId = "tblChild" + pageId;
+    var formId = "form" + pageId;
+    var divDetailsId = "divDetails" + pageId;
+}
+
+<div class="d-flex flex-column-fluid" id="@pageId">
+    <input type="hidden" id="ApprovePage" value="@ViewBag.ApprovePage" />
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;">
+                    <form class="form" id="@formId">
+                        <input type="hidden" id="ReportMenuID" name="ReportMenuID" value="0" />
+                        <input type="hidden" id="ReportMenuName" name="ReportMenuName" value="" />
+                        <input type="hidden" id="IsExcelExportAllowed" name="IsExcelExportAllowed" value="0" />
+                        <div class="card-body">
+                            <div class="row k_row">
+                                <div class="col col-6">
+
+                                    <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="btn btn-sm fw-bold btn-secondary" style="border-radius: 0px; width: 100%; text-align: left; font-weight: 700; border-bottom: 2px solid #3699ff;" id="lblReportTitle">
+                                                    &nbsp;Reports List
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <div class="form-inner12">
+                                                        <label class="left-col col-form-label text-lg-right">Report Type</label>
+                                                        <div class="right-col">
+                                                            <input type="text" class="w-100" kendorole="combobox" id="cmbReportType" name="cmbReportType" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div id="tblReportId"></div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <div class="col col-6" >
+                                    <div class="k-block p-4" style="height:100%;border:1px solid #008093; border-radius:5px !important;">
+                                        <div class="k-header">Report Parameter</div>
+                                        <div class="row displayNone" id="divReportParam">
+                                            <div class="col-12">
+                                                <div style="text-align: center; margin: 20px 0;">
+                                                    <label id="lblReportName" style="margin: 0; font-size: 24px; font-weight: bold;"></label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Project</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbUnit" name="cmbUnit" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Buyer</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbBuyer" name="cmbBuyer" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="divNegoBank">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Bank (Nego)</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbNegoBank" name="cmbNegoBank" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="divLCNo">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">L/C No.</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbLC" name="cmbLC" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="divInvoice">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Invoice No.</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbInvoice" name="cmbInvoice" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="divZone">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Zone</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbZone" name="cmbZone" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="divCertType">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Certificate Type</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbCertificateType" name="cmbCertificateType" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="divYarnType">
+                                                        <div class="form-group">
+                                                            <div class="form-inner16">
+                                                                <label class="left-col col-form-label text-lg-right">Yarn Type</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" placeholder="" id="cmbYarnType" name="cmbYarnType" class="w-100" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                  
+                                                    
+                                                </div>
+                                                <br />
+                                                <div class="row" id="divDate">
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <div class="form-inner10">
+                                                                <label class="left-col col-form-label text-lg-right">From Date</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" class="w-100" kendorole="kendodatepicker" placeholder="" id="txtFromDate" name="txtFromDate" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="form-group">
+                                                            <div class="form-inner10">
+                                                                <label class="left-col col-form-label text-lg-right">To Date</label>
+                                                                <div class="right-col">
+                                                                    <input type="text" class="w-100" kendorole="kendodatepicker" placeholder="" id="txtToDate" name="txtToDate" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <br />
+                                                <br />
+
+                                                <div class="row">
+                                                    <!-- First Row -->
+                                                    <div class="col-lg-12 text-center mb-3">
+                                                        <button class="k-button quick-date-btn" id="btnToday">
+                                                            <i class="fa fa-calendar-day"></i> Today
+                                                        </button>
+                                                        <button class="k-button quick-date-btn" id="btnYesterday">
+                                                            <i class="fa fa-calendar-minus"></i> Yesterday
+                                                        </button>
+                                                        <button class="k-button quick-date-btn" id="btnThisMonth">
+                                                            <i class="fa fa-calendar-week"></i> This Month
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Second Row -->
+                                                    <div class="col-lg-12 text-center">
+                                                        <button class="k-button quick-date-btn" id="btnLastMonth">
+                                                            <i class="fa fa-calendar-times"></i> Previous Month
+                                                        </button>
+                                                        <button class="k-button quick-date-btn" id="btnThisYear">
+                                                            <i class="fa fa-calendar-alt"></i> This Year
+                                                        </button>
+                                                        <button class="k-button quick-date-btn" id="btnLastYear">
+                                                            <i class="fa fa-calendar-alt"></i> Previous Year
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-lg-12 text-lg-center">
+                                                        <button type="button" id="btnGenerateReport" class="btn btn-outline-primary">
+                                                            <i class="fa fa-file-excel"></i> Export to Excel
+                                                        </button>
+                                                       @*  <button type="button" id="btnViewReport" class="btn btn-outline-primary">
+                                                            <i class="fa fa-file-excel"></i> View Report
+                                                        </button> *@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section section_footer
+{
+    <script src="~/btl/excelexport/ExcelExport.js?version=@version"></script>
+}

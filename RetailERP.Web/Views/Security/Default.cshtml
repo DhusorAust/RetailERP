@@ -1,0 +1,87 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    ViewData["Title"] = "Default";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section section_top
+    {
+    <style type="text/css">
+        .ticker {
+            width: 100% !important;
+        }
+        .clock {
+            color: #093956;
+            font-size: 25px;
+            font-family: orbitron-variablefont_wght;
+            letter-spacing: 3px;
+            font-weight: bold
+        }
+    </style> 
+     
+    <link href="~/common/dashboard/dashboardmain.css" rel="stylesheet" />
+    <link href="~/common/newsticker/ticker-style.css" rel="stylesheet" />
+
+    <style>
+        #chartMostSellFabCodediv, #chartComExPILCInvStatus, #chartTodaysInspectionStatus, #chartTopTenBuyers, #chartTopTenBrands, #chartComMktTeamStatus, #chartComMktTeamStatus2 {
+            width: 100%;
+            height: 380px;
+        } 
+    </style>
+} 
+<div id="divIpName">
+    <h2 style="text-align: center;"> <label class="clock" id="lblIpAddress"></label></h2>
+</div>
+
+<div class="container d-none">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="divTicker" class="displayNone">
+                <ul id="js-news" class="js-hidden">
+                    @*<li class="news-item"><a href="#">সবাইকে জানাই পবিত্র ঈদ উল ফিতরের আন্তরিক শুভেচ্ছা, ঈদ মুবারক। </a></li>*@
+                    <li class="news-item"><a href="#">WELCOME TO RETAIL ERP APPLICATION </a></li>
+                    <li class="news-item"><a href="#">FOR ANY QUERY PLEASE CONTACT WITH IT DEPARTMENT</a></li>
+                    <li class="news-item"><a href="#">PLEASE CHANGE YOUR DEFAULT PASSWORD</a></li>
+                    <li class="news-item"><a href="#">THANKS FOR USING - RETAIL ERP APPLICATION</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row displayNone" id="divDbName">
+        <div class="col-md-12" style="text-align:center;">
+            <label class="lbl" id="lblDbName" style="text-align:center; font-size:24px;color:red;font-weight:bold;"></label>
+        </div>
+    </div>
+</div>
+
+@section section_footer
+{
+    @*<script>
+        var base = '@Url.Content("~/")';
+
+        $(document).ready(function () {
+            LoadRamadanHadish();
+        });
+        function LoadRamadanHadish() {
+            $.ajax({
+                type: "POST",
+                url: base + "Security/GetRamadanHadis",
+                //data: { UserName: $("#UserID").val(), PasswordH: $("#PasswordH").val() },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.length>0) { 
+                        $("#idHadish").html(data[0].NoticePart1);
+                        $("#idHadish2").html(data[0].NoticePart2);
+                    }  
+                },
+                error: function (req, status, error) {
+                    MessageHelper.Warning(error, "Warning");
+                }
+            });
+        }
+    </script>*@
+    <script src="~/common/newsticker/jquery.ticker.js"></script> 
+}
+
+

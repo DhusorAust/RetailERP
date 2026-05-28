@@ -1,0 +1,16 @@
+﻿{
+
+  "ConnectionStrings": {
+    "ERPDBConnection": "Server=DHUSOR\\SQLEXPRESS;Database=ERPDB;Trusted_Connection=True;Encrypt=False;TrustServerCertificate=True;",
+    "RetailERPConnection": "Server=DHUSOR\\SQLEXPRESS;Database=RetailERP;Trusted_Connection=True;Encrypt=False;TrustServerCertificate=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+

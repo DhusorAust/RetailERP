@@ -1,0 +1,418 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+{
+    <script type="text/javascript">
+        localStorage.setItem("pageName", "@ViewBag.PageName");
+        localStorage.setItem("menuId", "@ViewBag.MenuId");
+    </script>
+
+    <style>
+
+        #tblPIInformation-71 {
+            font-size: 12px;
+        }
+
+        #tblChild2PIInfo-1543, #tblChild3PIInfo-1543, #tblPIInfo-1543, #tblPIInfo_Audit-1891 {
+            font-size: 12px;
+        }
+
+        .form-group label {
+            font-size: 12px !important;
+            font-weight: 400;
+        }
+    </style>
+
+}
+
+@{
+    var pageId = ViewBag.PageName + "-" + ViewBag.MenuId;
+    var divToolbarId = "divtoolbar" + pageId;
+    var toolbarId = "toolbar" + pageId;
+    var tblMasterId = "tbl" + pageId;
+    var tblChildId = "tblChild" + pageId;
+    var tblChildId2 = "tblChild2" + pageId;
+    var tblChildId3 = "tblChild3" + pageId;
+    var formId = "form" + pageId;
+    var divDetailsId = "divDetails" + pageId;
+}
+
+<div class="d-flex flex-column-fluid" id="@pageId">
+    <input type="hidden" id="ApprovePage" value="@ViewBag.ApprovePage" /> 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px; border-radius:0px !important;">
+                    <div id="@divToolbarId">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="@toolbarId">
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px; " id="btnPendingList">
+                                        <i class="fa fa-list"></i>&nbsp;Pending List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px; display: none;" id="btnEditList">
+                                        <i class="fa fa-list"></i>&nbsp;Temp List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-secondary" style="border-radius: 0px; display: none1;" id="btnPendingApproveList">
+                                        <i class="fa fa-list"></i>&nbsp;Pending For Acknowledgement List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px; display: none;" id="btnApprovedList">
+                                        <i class="fa fa-list"></i>&nbsp; Acknowledgement List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px; display: none;" id="btnRejectList">
+                                        <i class="fa fa-list"></i>&nbsp;Reject List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px; display: none;" id="btnAllList">
+                                        <i class="fa fa-list"></i>&nbsp;All List
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="@tblMasterId"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" id="@formId">
+                        <input type="hidden" id="PRMasterID" name="PRMasterID" value="0" /> 
+                        <input type="hidden" id="DepartmentID" name="DepartmentID" value="0" />
+                        <input type="hidden" id="SectionID" name="SectionID" value="0" />
+                        <input type="hidden" id="SubSectionID" name="SubSectionID" value="0" /> 
+
+                        <input type="hidden" id="SDRFMasterID" name="SDRFMasterID" value="0" />
+                        <input type="hidden" id="BuyerRefMasterID" name="BuyerRefMasterID" value="0" />
+                        <input type="hidden" id="BuyerRefColorID" name="BuyerRefColorID" value="0" />
+                        <input type="hidden" id="BuyerID" name="BuyerID" value="0" />
+
+                        
+
+
+                        <div class="card-body" id="@divDetailsId" style="display:none">
+                            <div class="k-block mb-1" style="padding: 5px !important; border-radius: 0px !important;">
+                                <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px;">
+                                    <i class="fa fa-cogs text-info text-primary">
+                                    </i> &nbsp; General Information
+                                </h6>
+                            </div>
+
+                            <div class="k-block p-4" style="border:1px solid #008093; border-radius:0px !important;">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Chemical Code</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" style="font-weight:700 !important;" placeholder="" id="ChemicalCode" name="ChemicalCode" disabled />
+                                                    <span class="form-text text-muted ChemicalCode">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Brand Ref.</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" style="font-weight:700 !important;" placeholder="" id="BuyerRef" name="BuyerRef" disabled />
+                                                    <span class="form-text text-muted BuyerRef">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Brand Name</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" style="font-weight:700 !important;" placeholder="" id="BuyerName" name="BuyerName" disabled />
+                                                    <span class="form-text text-muted BuyerName">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Product Name</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" style="font-weight:700 !important;" placeholder="" id="ProductName" name="ProductName" disabled />
+                                                    <span class="form-text text-muted ProductName">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Color Name</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" style="font-weight:700 !important;" placeholder="" id="ColorName" name="ColorName" disabled />
+                                                    <span class="form-text text-muted ColorName">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Season</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" id="SeasonName" name="SeasonName"  style="font-weight:700 !important;" placeholder="" disabled />
+                                                    <span class="form-text text-muted SeasonName">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1" style="text-align: right; font-weight: bold;">
+                                        <label class="left-col col-form-label text-lg-right">Development Type</label>
+                                    </div>
+                                    <div class="col-md-4" style="margin-top: 9px;">
+                                        <div class="radio-inline">
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="DEV_ID" value=1 name="DEV_ID" class="DEV_ID_New" />
+                                                <span></span>New Product Development(NPD)
+                                            </label>
+                                             
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="DEV_ID" value=2 name="DEV_ID" class="DEV_ID_Remake" />
+                                                <span></span>Remake Product Development(RPD)
+                                            </label>
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="DEV_ID" value=3 name="DEV_ID" class="DEV_ID_ReEng" />
+                                                <span></span>Re-Engineering Product Development(RPD)
+                                            </label>
+                                        </div>
+                                        <span class="form-text text-muted DEV_ID">required.</span>
+                                    </div>
+
+                                    <div class="col-md-1" style="text-align: right; font-weight: bold;">
+                                        <label class="left-col col-form-label text-lg-right">Marketing Team</label>
+                                    </div>
+                                    <div class="col-md-3" style="margin-top: 9px;">
+                                        <div class="radio-inline">
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="TEAMID" value=1 name="TEAMID" class="TEAMID_A" />
+                                                <span></span>Team-A
+                                            </label>
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="TEAMID" value=2 name="TEAMID" class="TEAMID_B" />
+                                                <span></span>Team-B
+                                            </label>
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="TEAMID" value=3 name="TEAMID" class="TEAMID_C" />
+                                                <span></span>Team-C
+                                            </label>
+                                        </div>
+                                        <span class="form-text text-muted TEAMID">required.</span>
+                                    </div>
+
+                                    <div class="col-md-1" style="text-align: right; font-weight: bold;">
+                                        <label class="left-col col-form-label text-lg-right">RnD Team</label>
+                                    </div>
+                                    <div class="col-md-2" style="margin-top: 9px;">
+                                        <div class="radio-inline">
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="RND_TEAM_ID" value=1 name="RND_TEAM_ID" class="RND_TEAM_ID_1" />
+                                                <span></span>Team-A
+                                            </label>
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="RND_TEAM_ID" value=2 name="RND_TEAM_ID" class="RND_TEAM_ID_2" />
+                                                <span></span>Team-B
+                                            </label>
+                                            <label class="radio radio-outline radio-primary">
+                                                <input type="radio" id="RND_TEAM_ID" value=3 name="RND_TEAM_ID" class="RND_TEAM_ID_3" />
+                                                <span></span>Team-C
+                                            </label>
+                                        </div>
+                                        <span class="form-text text-muted RND_TEAM_ID">required.</span>
+                                    </div>
+                                </div> 
+                                  
+                                <div class="row"> 
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">SDRF No</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="form-control text-center" id="SDRFNo" name="SDRFNo" style="font-weight:700 !important;" placeholder="" disabled />
+                                                    <span class="form-text text-muted SDRFNo">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">SDRF Date</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="w-100" kendorole="kendodatepicker" placeholder="dd-MMM-yyyy" id="SDRFDate" name="SDRFDate" autocomplete="off" />
+                                                    <span class="form-text text-muted SDRFDate">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Required Date</label>
+                                                <div class="right-col">
+                                                    <input type="text" class="w-100" kendorole="kendodatepicker" placeholder="dd-MMM-yyyy" id="RequiredDate" name="RequiredDate" autocomplete="off" />
+                                                    <span class="form-text text-muted RequiredDate">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Entry Person</label>
+                                                <div class="right-col kendo_combobox">
+                                                    <input type="text" id="SDRFBy" name="SDRFBy" style="width: 100%;" tabindex="10" />
+                                                    <span class="form-text text-muted SDRFBy">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Priority</label>
+                                                <div class="right-col">
+                                                    <input type="text" kendorole="combobox" id="PriorityID" name="PriorityID" style="width:100%;" />
+                                                    <span class="form-text text-muted PriorityID">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Remarks</label>
+                                                <div class="right-col">
+                                                    <textarea id="Remarks" class="form-control" name="Remarks" rows="1" cols="20" autocomplete="on"></textarea>
+                                                    <span class="form-text text-muted Remarks">.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right"> Claim</label>
+                                                <div class="right-col multi_select multi_select_multicolumn">
+                                                    <input id="SDRFClaimID" name="SDRFClaimID" style="width:100%" />
+                                                    <span class="form-text text-muted SDRFClaimID">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right"> Feel</label>
+                                                <div class="right-col multi_select multi_select_multicolumn">
+                                                    <input id="SDRFFeelID" name="SDRFFeelID" style="width:100%" />
+                                                    <span class="form-text text-muted SDRFFeelID">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right"> Fragrance</label>
+                                                <div class="right-col multi_select multi_select_multicolumn">
+                                                    <input id="SDRFFragranceID" name="SDRFFragranceID" style="width:100%" />
+                                                    <span class="form-text text-muted SDRFFragranceID">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right"> Restriction </label>
+                                                <div class="right-col multi_select multi_select_multicolumn">
+                                                    <input id="SDRFRestrictionID" name="SDRFRestrictionID" style="width:100%" />
+                                                    <span class="form-text text-muted SDRFRestrictionID">required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" id="divReviseNote">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Revise Reason</label>
+                                                <div class="right-col">
+                                                    <textarea id="ReviseReason" class="form-control" name="ReviseReason" rows="1" cols="20" autocomplete="on"></textarea>
+                                                    <span class="form-text text-muted ReviseReason">.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" id="divRejectNote">
+                                        <div class="form-group">
+                                            <div class="form-inner12">
+                                                <label class="left-col col-form-label text-lg-right">Reject Reason</label>
+                                                <div class="right-col">
+                                                    <textarea id="RejectReason" class="form-control" name="RejectReason" rows="1" cols="20" autocomplete="on"></textarea>
+                                                    <span class="form-text text-muted RejectReason">.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="k-block mb-1" style="padding: 5px !important; border-radius: 0px !important; margin-top:2px;">
+                                <h6 class="card-title" style="margin-bottom:0px; padding-bottom:0px;">
+                                    <i class="fa fa-cogs text-info text-primary">
+                                    </i> &nbsp; Details Information
+                                </h6>
+                            </div> 
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="@tblChildId"></div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-3 text-lg-left">
+                                        @* <div class="btn btn-sm btn-pdlprint btn-custom160" id="btnPrintPR"><i class="fa fa-print"></i> Print Requisition</div>  *@
+                                    </div>
+                                    <div class="col-lg-9 text-lg-right">
+                                        <div class="btn btn-sm btn-pdlbacktolist btn-custom120" id="btnBackToList"> Back to List</div> 
+                                        <div class="btn btn-sm btn-pdlsave btn-custom" id="btnSave"> <i class="fa fa-save"></i> Save</div>
+                                        <div class="btn btn-sm btn-pdlSaveForApprove btn-custom200" id="btnSaveForApprove"><i class="fa fa-retweet"></i> Save & Send To R & D</div>
+                                        <div class="btn btn-sm btn-pdlapproved btn-custom180" id="btnAcknowledgement"><i class="fa fa-check"></i> Acknowledgement</div>
+                                        <div class="btn btn-sm btn-pdlrevise btn-custom120 btn-revcolor" id="btnRevise" style="display:none;"><i class="fa fa-reply-all"></i> Revise</div>
+                                        <div class="btn btn-sm btn-pdlreject btn-custom120" id="btnReject" style="display:none;"><i class="fa fa-ban"></i> Reject</div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section section_footer
+{
+    <script src="~/chem/Marketing/SDRFEntry.js?version=@version"></script>
+
+}
+
+

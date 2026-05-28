@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Report List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+{
+    
+} 
+
+<div class="d-flex flex-column-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;"> 
+                    <div class="row">
+                        <div class="col-lg-12"> 
+                            <div class="btn btn-sm fw-bold btn-secondary" style="border-radius: 0px; width: 100%; text-align: left; font-weight: 700; border-bottom: 2px solid #3699ff;" id="lblReportTitle">
+                                &nbsp;Reports List
+                            </div>  
+                        </div>
+                        <div class="col-lg-12">
+                            <div id="tblReportId"></div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+@section section_footer
+    {
+    <script>
+        var ReportTitle = '@ViewBag.ReportTitle'; 
+        var MenuReportID = '@ViewBag.MenuReportID';
+        var UserRoleID = '@ViewBag.UserRoleID';
+
+        $(document).ready(function () {
+            $('#lblReportTitle').html(ReportTitle);
+            initReportsTable();
+            //Selected Row in the kendo Grid
+            //kendoGridRowSelected($("#tblReportId"));
+        });
+        function initReportsTable() {
+          if ($("#tblReportId").data("kendoGrid")) $("#tblReportId").kendoGrid('destroy').empty();
+            dataSource = new kendo.data.DataSource({
+                type: "json",
+                serverPaging: true,
+                serverSorting: true,
+                serverFiltering: true,
+                allowUnsort: true,
+                pageSize: 50,
+                transport: {
+                    read: {
+                        type: "POST",
+                        url: `/Reports/GetReportList?menuRepportID=${MenuReportID}&&UserRoleID=${UserRoleID}`,
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                    },
+                    parameterMap: function (options) {
+                        return JSON.stringify(options);
+                    }
+                },
+                schema: {
+                    data: "Items", total: "TotalCount",
+                    model: {
+                         
+                    }
+                }
+            });
+
+            var command = [{ name: "view", text: "", iconClass: "k-icon k-i-print", className: "k-success k-grid-button-rpt", click: handleCommands },];
+
+            var columns = [
+                
+                {
+                    title: "Action", command: command, width: 90,
+                },
+                {
+                    field: "MenuReportID", title: "MenuReportID", hidden: true,
+                },
+                {
+                    field: "MenuID	", title: "MenuID", hidden: true,
+                },
+                {
+                    field: "ViewName", title: "ViewName", hidden: true,
+                },
+                {
+                    field: "Controller", title: "Controller", hidden: true,
+                },
+                { field: "RowSLNo", title: "Sl. No.", template: "#= ++gbGridSLNo #", width: 80 },
+                {
+                    field: "MenuHead", title: "Report Name",
+                }, 
+            ];
+            var search =
+            {
+                fields:
+                    [
+                        "MenuHead"
+                    ]
+            } 
+            KendoGridHelper.MasterGridLoad("#tblReportId", "830px", search, columns);
+      }
+
+    function handleCommands(args) {
+        args.preventDefault();
+        var tr = $(args.currentTarget).closest("tr");
+        var selectedItem = this.dataItem(tr);
+
+        if (selectedItem != null) {
+                var controller = selectedItem.Controller;
+                var viewPage = selectedItem.ViewName;
+
+            window.open("/" + controller + "/" + viewPage + "", "_blank"); 
+        }
+    }
+    </script>
+}
+
+

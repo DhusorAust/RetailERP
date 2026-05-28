@@ -1,0 +1,157 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    .pvtTotal, .pvtTotalLabel, .pvtGrandTotal {
+        display: none;
+    }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Partial("~/Views/PV/Pivot_Table.cshtml")
+</head>
+<body>
+    <div id="Print_DIv">
+        <div class="row">
+            <div class="col-md-12">
+                <table style="width:100%;margin-left:auto; margin-right:auto; " cellpadding="1px" cellspacing="0">
+                    <tr>
+                        <td colspan="5" style=" text-align:center; width:100%;  font-size:1.2em;"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light bordered">
+                    <div class="portlet-body table-both-scroll" id="output">
+                        <table class="table table-striped table-bordered table-hover order-column" id="sample_3" style="z-index:1;">
+                            <thead>
+                                <tr>
+                                    <th>User Role ID</th>
+                                    <th>UserRoleCode</th>
+                                    <th>UserRoleName</th>
+                                    <th>CreatedDate</th>
+                                    
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    var base = '@Url.Content("~/")';
+    var statusCons;
+    statusCons = "ALL";
+
+    $(document).ready(function () {
+        var base = '@Url.Content("~/")';
+        //var StartDate = '@ViewBag.StartDate';
+        //var EndDate = '@ViewBag.EndDate';
+        
+        //if (Description != '-1') {
+        //    Description = "'" + Description.replace(/,/g, "','") + "'";
+        //}
+
+        //if (Grade != '-1') {
+        //    Grade = "'" + Grade.replace(/,/g, "','") + "'";
+        //}
+
+        //if (Size != '-1') {
+        //    Size = "'" + Size.replace(/,/g, "','") + "'";
+        //}
+
+
+       
+        load_Report();
+
+    });
+
+    function load_Report() {
+        $("#sample_3 tbody").remove();
+        $.ajax({
+            //type: "POST",
+            //url: `/api/userrole/PivotTestGetList`,
+            //dataType: "json",
+            //contentType: "application/json; charset=utf-8",
+            //data: JSON.stringify({
+            //    "UserRoleID": UserRoleID,
+            //    "EndDate": EndDate,
+            //    "Shift": Shift,
+            //    "LINE_NUMBER": LINE_NUMBER,
+            //    "Batch_STATUS": Batch_STATUS,
+            //    "BATCH_NO": BATCH_NO,
+            //    "Item": Item,
+            //    "Description": Description,
+            //    "Grade": Grade,
+            //    "Size": Size,
+            //    "Counter_No": Counter_No,
+            //    "ConfirmStatus": ConfirmStatus
+            //}),
+
+            type: "POST",
+            url: "/api/userrole/PivotGetList",
+            dataType: "JSON",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                if (data.length == 0) {
+                    $('#btnFail').click();
+                    setTimeout(function () {
+                        window.close();
+                    }, 5000);
+                }
+               
+                var content = '';
+                var counter = 1;
+                var ResultCounter = 0;
+                $.each(data.C_PivotTest, function (i, obj) {
+                    ResultCounter++;
+                    var Odd_Even = ''
+        
+                    content += '<tr>' +
+                        '<td >' + obj.UserRoleID + '</td>' +
+                        '<td >' + obj.UserRoleCode + '</td>' +
+                        '<td >' + obj.UserRoleName + '</td>' +
+                        '<td >' + obj.CreatedDate + '</td>' +
+                        '</tr>';
+                });
+                console.log(ResultCounter);
+       
+                $("#sample_3").append('<tbody>' + content + '</tbody>');
+                var input = $("#sample_3")
+
+                var sum = $.pivotUtilities.aggregatorTemplates.sum;
+                var numberFormat = $.pivotUtilities.numberFormat;
+                var intFormat = numberFormat({ digitsAfterDecimal: 2 });
+
+                $("#output").pivot(
+                    input,
+                    {
+                        rows: [
+                            "UserRoleCode",
+                           
+                            
+                        ],
+                        cols: ["UserRoleName"],
+                        //aggregator: sum(intFormat)(["UserRoleID"]),
+                    },
+                    "UserRoleName"
+                );
+
+            }
+
+        });
+
+
+    }
+</script>
+
+

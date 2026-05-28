@@ -1,0 +1,119 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+{
+    <script type="text/javascript">
+        localStorage.setItem("pageName", "@ViewBag.PageName");
+        localStorage.setItem("menuId", "@ViewBag.MenuId");
+    </script>
+}
+@{
+    var pageId = ViewBag.PageName + "-" + ViewBag.MenuId;
+    var divToolbarId = "divtoolbar" + pageId;
+    var toolbarId = "toolbar" + pageId;
+    var tblMasterId = "tbl" + pageId;
+    var tblChildId = "tblChild" + pageId;
+    var formId = "form" + pageId;
+    var divDetailsId = "divDetails" + pageId;
+}
+
+<div class="d-flex flex-column-fluid" id="@pageId">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;">
+                    <div id="@divToolbarId">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="@toolbarId">
+                                    <div class="btn btn-sm fw-bold btn-secondary" style="border-radius: 0px;" id="btnNewAdd">
+                                        <i class="fa fa-plus"></i>&nbsp;New Add
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px;" id="btnEditList">
+                                        <i class="fa fa-list"></i>&nbsp;Save List
+                                    </div>
+                                    
+                                    @*<div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px;" id="btnPivotReportTest">
+                                        <i class="fa fa-list"></i>&nbsp;Pivot Report Test
+                                    </div>*@
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="@tblMasterId"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" id="@formId">
+                        <input type="hidden" id="UserRoleID" name="UserRoleID" value="-1111" />
+
+                        <div class="card-body" id="@divDetailsId" style="display:none">
+                            <div class="card-header" style="padding:0px;">
+                                <h6 class="card-title" style="margin-bottom:5px;"> General Information</h6>
+                            </div>
+
+                            <div class="row" style="padding-bottom:10px;">
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-inner10">
+                                            <label class="left-col col-form-label text-lg-right">Code</label>
+                                            <div class="right-col">
+                                                <input type="text" class="form-control" placeholder="" id="UserRoleCode" name="UserRoleCode" disabled />
+                                                <span class="form-text text-muted UserRoleCode">required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-inner6">
+                                            <label class="left-col col-form-label text-lg-right">Name</label>
+                                            <div class="right-col">
+                                                <input type="text" class="form-control" placeholder="" id="UserRoleName" name="UserRoleName" />
+                                                <span class="form-text text-muted UserRoleName">required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-inner10">
+                                            <label class="left-col col-form-label text-lg-right">Status</label>
+                                            <div class="right-col">
+                                                <select class="form-control cls-select" name="IsActive" id="IsActive" disabled="disabled">
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
+                                                </select>
+                                                <span class="form-text text-muted IsActive">required.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6"> </div>
+                                    <div class="col-lg-6 text-lg-right">
+                                        <div class="btn btn-secondary btn-custom120" id="btnBackToList">Back to List</div>
+                                        <div class="btn btn-primary btn-custom" id="btnSave">Save</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section section_footer
+    {
+    <script src="~/btl/security/userrole.js?version=@version"></script> 
+}
+

@@ -1,0 +1,30 @@
+﻿
+body {
+    background: #fff !important;
+}
+
+.dbTopDiv {
+    border: 1px solid #a3d0e4;
+    padding: 0;
+    width: 100%;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.db2ndDiv {
+    /*background: #88ad19;*/
+    flex:auto;
+    padding: 0;
+    text-align: center;
+    height: 30px;
+    padding: 8px;
+    color: currentcolor;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.spnHead {
+    text-align: center;
+}
+

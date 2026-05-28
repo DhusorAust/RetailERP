@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="22.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="XtraReport" Margins="50, 45, 0, 0" PaperKind="A4" PageWidth="827" PageHeight="1169" Version="22.2" EventsInfo="|pictureBox1,BeforePrint,pictureBox1_BeforePrint" DataMember="spRpt_Formulation_Methode" DataSource="#Ref-0">
+  <Extensions>
+    <Item1 Ref="2" Key="VSReportExtInfo" Value=".repx" />
+  </Extensions>
+  <Parameters>
+    <Item1 Ref="4" ValueInfo="0" AllowNull="true" Name="stabilityID" Type="#Ref-3" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="TopMarginBand" Name="TopMargin" HeightF="0" />
+    <Item2 Ref="6" ControlType="DetailBand" Name="Detail" HeightF="230">
+      <MultiColumn Ref="7" ColumnCount="3" ColumnSpacing="5" Layout="AcrossThenDown" Mode="UseColumnCount" />
+      <SortFields>
+        <Item1 Ref="8" FieldName="RowSLNo" />
+      </SortFields>
+      <Controls>
+        <Item1 Ref="9" ControlType="XRPictureBox" Name="pictureBox1" Sizing="StretchImage" ImageAlignment="MiddleCenter" SizeF="225,225" LocationFloat="0,0">
+          <ExpressionBindings>
+            <Item1 Ref="10" EventName="BeforePrint" PropertyName="ImageUrl" Expression="[FilePath]" />
+          </ExpressionBindings>
+        </Item1>
+      </Controls>
+    </Item2>
+    <Item3 Ref="11" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="0" />
+  </Bands>
+  <ParameterPanelLayoutItems>
+    <Item1 Ref="12" LayoutItemType="Parameter" Parameter="#Ref-4" />
+  </ParameterPanelLayoutItems>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v22.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0ic3BScHRfRm9ybXVsYXRpb25fTWV0aG9kZSI+PFBhcmFtZXRlciBOYW1lPSJAU3RhYmlsaXR5VGVzdE1hc3RlcklEIiBUeXBlPSJEZXZFeHByZXNzLkRhdGFBY2Nlc3MuRXhwcmVzc2lvbiI+KFN5c3RlbS5JbnQzMikoP3N0YWJpbGl0eUlEKTwvUGFyYW1ldGVyPjxQcm9jTmFtZT5zcFJwdF9TdGFiaWxpdHlUZXN0X0ZpbGU8L1Byb2NOYW1lPjwvUXVlcnk+PFJlc3VsdFNjaGVtYT48RGF0YVNldCBOYW1lPSJzcWxEYXRhU291cmNlMSI+PFZpZXcgTmFtZT0ic3BScHRfRm9ybXVsYXRpb25fTWV0aG9kZSI+PEZpZWxkIE5hbWU9IlN0YWJpbGl0eVRlc3RNYXN0ZXJJRCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkZvcm11bGF0aW9uTWFzdGVySUQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJJc0FjdGl2ZSIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkNyZWF0ZWRCeSIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkNyZWF0ZWREYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iVXBkYXRlQnkiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJVcGRhdGVkRGF0ZSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IlN0YWJpbGl0eVRlc3RGaWxlUGF0aElEIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iU3RhYmlsaXR5VGVzdE1hc3RlcklEXzEiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJTdGFiaWxpdHlUZXN0VGVtcGVyYXR1cmUiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJGaWxlTmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJGaWxlUGF0aCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJJc0FjdGl2ZV8xIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v22.2" Ref="3" Content="System.Int32" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

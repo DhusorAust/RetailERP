@@ -1,0 +1,565 @@
+@model ALLMENU
+@using Microsoft.AspNetCore.Http
+@using RetailERP.Core.Chem.Security;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json
+@{
+    var version = Guid.NewGuid().ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.PageTitle</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="Multi column form examples" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="~/Files/favicon.ico" />
+
+    <link href="~/common/css/form/fonts.googleapis.css" rel="stylesheet" />
+
+    @*Kendu*@ 
+    <link href="~/common/kendoui2021/kendo/style/kendo.common.min.css" rel="stylesheet" />
+    @* <link href="~/common/kendoui2021/kendo/style/kendo.silver.min.css" rel="stylesheet" />   *@
+    <link href="~/common/kendoui2021/kendo/style/kendo.blueopal.min.css" rel="stylesheet" />
+    <script src="~/common/kendoui2021/kendo/jquery-3.6.0.min.js"></script>
+
+    @*<environment include="Development">*@
+    <link href="~/theme/assets/plugins/global/plugins.bundle1894.css" rel="stylesheet" />
+    <link href="~/theme/assets/plugins/custom/prismjs/prismjs.bundle1894.css" rel="stylesheet" />
+    <link href="~/theme/assets/css/style.bundle1894.css" rel="stylesheet" type="text/css" />
+    <link href="~/theme/assets/css/themes/layout/brand/dark1894.css" rel="stylesheet" type="text/css" />
+    <link href="~/theme/assets/css/themes/layout/aside/dark1894.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/common/css/form/formcontrol.css?version=@version" rel="stylesheet" />
+
+    @*page loading circle plugin*@ 
+    <link href="~/common/page_loading_circle/libpageloadingcircle.css?version=@version" rel="stylesheet" />
+
+    @await RenderSectionAsync("Styles", required: false)
+
+    <link href="~/common/css/form/dashboarddesign.css?version=@version" rel="stylesheet" />
+    <link href="~/common/amcharts/plugins/export/export.css?version=@version" rel="stylesheet" />
+
+
+    @RenderSection("section_top")
+
+    <style type="text/css">
+        .avatar {
+            vertical-align: middle;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            border: 1px solid #286893;
+        }
+
+        .breadcumDesign {
+            color: #008093 !important;
+            font-size: 22px;
+            font-family: 'Helvetica'; /* Apply the Roboto font */
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .breadcumColor {
+            font-weight: 700 !important;
+            color: white !important;
+        }
+
+        .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-text {
+            font-size: 12px !important;
+        }
+
+        .menu-nav i {
+            color: #ffffff;
+        }
+
+    </style>
+
+    <script>
+        $.ajaxSetup({
+            async: false
+        });
+        var isExportPage = false;
+        var MenuTitle2 = '@ViewBag.MenuTitle2';
+        var MenuTitle3 = '@ViewBag.MenuTitle3';
+        var MenuTitle4 = '@ViewBag.MenuTitle4';
+
+        var base = '@Url.Content("~/")';
+        $(document).on('focus', '.select2.select2-container', function (e) {
+            // only open on original attempt - close focus event should not fire open
+            if (e.originalEvent && $(this).find(".select2-selection--single").length > 0) {
+                $(this).siblings('select').select2('open');
+            }
+        });
+
+        var CurrentUser = "";
+        var gbGridHeight="700px";
+
+        $(document).ready(function () {
+            $('.kt_datepicker_1,.kt_datepicker_3').on('changeDate', function (ev) {
+                $(this).datepicker('hide');
+            });
+
+            $('.tools').hide();
+            $('.tools').css({ "display": "none" });
+
+
+        //Tab Index
+        let enterHandled = false;
+        $(document).on("keypress", "[tabindex]", function (e) {
+            if (e.which === 13 && !enterHandled) {
+                enterHandled = true; // prevent re-trigger
+
+                e.preventDefault();
+
+                const $current = $(this);
+                const currentTabIndex = parseInt($current.attr("tabindex"));
+
+                const $all = $("[tabindex]")
+                    .filter(":visible:not(:disabled)")
+                    .sort((a, b) => parseInt($(a).attr("tabindex")) - parseInt($(b).attr("tabindex")));
+
+                let found = false;
+
+                $all.each(function () {
+                    const ti = parseInt($(this).attr("tabindex"));
+                    if (ti > currentTabIndex && !found) {
+                        $(this).focus();
+                        found = true;
+                    }
+                });
+
+                // Optional: If nothing left, call custom focus (like grid)
+                if (!found && isExportPage) {
+                    GridHelper.FocusKendoChildField(TblChildId, "objCount_ComExList");
+                }
+
+                // Reset after short delay
+                setTimeout(() => {
+                    enterHandled = false;
+                }, 100);
+            }
+        });
+
+            //Load Menu
+            var menuData = @Html.Raw(JsonConvert.SerializeObject(Model.MenuList));
+            MenuHelper.InitMenu(menuData);
+
+            //Load SessionUser into Global
+            GetCurrentUser();
+
+
+           // LoadRamadanHadish();
+
+            //for mark test database
+            if (CurrentUser.DabaseName != "ERPDB") {
+                $("#divDbName").show();
+                $("#lblDbName").html("TEST DB :  " + CurrentUser.DabaseName);
+                $("#kt_quick_user_toggle").html(CurrentUser.DabaseName);
+                //$('#kt_quick_user_toggle').css('color', 'white');
+                //$('#kt_header').attr('style', 'background-color: #F7032C !important');
+            }
+            else {
+                $("#divDbName").hide();
+                $("#lblDbName").html("");
+            }
+
+            UpdateDashboard();
+
+            //user photo display
+            if (CurrentUser.Image64 != "" && CurrentUser.Image64 != null && CurrentUser.Image64 != undefined) {
+                document.getElementById("profilePic").src = "data:image/png;base64," + CurrentUser.Image64;
+                localStorage.setItem('profilePic', CurrentUser.Image64);
+
+                $("#divAvatar").attr("src", "data:image/png;base64," + CurrentUser.Image64);
+            } else {
+                $("#profilePic").attr("src", "/files/usr1.jpg");
+                $("#divAvatar").attr("src", "/files/usr1.jpg");
+                localStorage.setItem('profilePic', null);
+            }
+            //set coockies
+
+            $('.imgCompanyLogo').attr('src', '/Files/logo.png')
+                .css({
+                    height: '65px',
+                    width: '160px',
+                }).css({ 'border-radius': '5px', 'opacity': '0.9' });
+
+
+          if ([4].includes(CurrentUser.UnitID)) {
+                $('.imgCompanyLogo').attr('src', '/Files/logo.png')
+                    .css({
+                        height: '56px',
+                        width: '160px',
+
+                    }).css({ 'border-radius': '5px','opacity': '0.9' });
+            }
+            else if ([7].includes(CurrentUser.UnitID)) {
+                $('.imgCompanyLogo').attr('src', '/Files/logo.png')
+                    .css({
+                        height: '56px',
+                        width: '160px',
+                    }).css({ 'border-radius': '5px', 'opacity': '0.9' });
+            }
+
+
+            // Set Menu Breadcum Design
+
+            $(".bcMenuTitle2").removeClass('breadcumDesign');
+            $(".bcMenuTitle3").removeClass('breadcumDesign');
+            $(".bcMenuTitle4").removeClass('breadcumDesign');
+
+            //Show Class
+            if (MenuTitle4 != "") {
+                $(".bcMenuTitle4").addClass('breadcumDesign');
+
+                $(".bcMenuTitle2").addClass('breadcumColor');
+                $(".bcMenuTitle3").addClass('breadcumColor');
+            }
+            else if (MenuTitle3 != "") {
+                $(".bcMenuTitle3").addClass('breadcumDesign');
+
+                $(".bcMenuTitle2").addClass('breadcumColor');
+            }
+            else if (MenuTitle2 != "") {
+                $(".bcMenuTitle2").addClass('breadcumDesign');
+            }
+
+
+           gbGridHeight = $(window).height() - 120;
+
+        });
+        function UpdateDashboard() {
+            var currentTime = DateTimeHelper.GetValidTime();
+            var currentDate = kendo.toString(new Date(), "dddd, MMM dd, yyyy");
+            if (CurrentUser.UserID == "1") {
+                // $("#divIpName").show();
+                if (CurrentUser.DabaseName == "PDL_Sample") {
+                    $("#lblIpAddress").html("TEST SAMPLE PRODUCTION");
+                }
+            }
+            else {
+                //$("#divIpName").hide();
+            }
+
+            $("#lblIpAddress").html(currentDate + ", " + currentTime.toString());
+            setTimeout('UpdateDashboard()', 100);
+        }
+        function GetCurrentUser() {
+            var objUser = "";
+            var jsonParam = "";
+            var serviceUrl = `../Security/GetCurrentUser`;
+            AjaxManager.GetList(serviceUrl, onSuccess, onFailed);
+            function onSuccess(jsonData) {
+                objUser = jsonData;
+                CurrentUser = jsonData;
+            }
+            function onFailed(error) {
+                window.alert(error.statusText);
+            }
+            return objUser;
+        }
+        function LoadRamadanHadish() {
+            $.ajax({
+                type: "POST",
+                url: base + "Security/GetRamadanHadis",
+                //data: { UserName: $("#UserID").val(), PasswordH: $("#PasswordH").val() },
+                dataType: "json",
+                success: function (data) {
+                    if (data.length > 0) {
+                        $("#idHadish").html(data[0].NoticePart1);
+                        $("#idHadish2").html(data[0].NoticePart2);
+                    }
+                },
+                error: function (req, status, error) {
+                    MessageHelper.Warning(error, "Warning");
+                }
+            });
+        }
+
+        // Stop Menu open ON Hover
+                  document.addEventListener("DOMContentLoaded", function () {
+          const body = document.body;
+          const btn = document.getElementById("kt_aside_toggle2");
+          // hover ????? ????? ????? ??? ??
+          new MutationObserver(() => {
+            if (body.classList.contains("aside-minimize-hover")) {
+              body.classList.remove("aside-minimize-hover");
+            }
+          }).observe(body, { attributes: true, attributeFilter: ["class"] });
+
+          btn?.addEventListener("click", function (e) {
+            e.preventDefault();
+            body.classList.toggle("aside-minimize");
+            body.classList.remove("aside-minimize-hover");
+          });
+        });
+
+
+
+
+    </script>
+
+    <style>
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            opacity: .09;
+        }
+
+        .fun-bg-img {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: 100% 100%;
+        }
+
+        .correctGIF > img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            display: block;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    @*Start :: Page Loading*@
+    <div class="cls_loading_wrap">
+        <div class="cls_loading_bg"></div>
+        @* <div class="cls_loading_wait">Please Wait ...</div> *@
+        <div class="correctGIF displayNone">
+            <img src="~/files/systemimage/pleasewait4.gif" width="200" height="200" />
+        </div>
+
+    </div>
+    @*End :: Page Loading*@
+    @*<img class="bg fun-bg-img" src="~/files/islamic.jpg" alt=""> *@
+    <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+        <a href="#">
+            @* <img src="~/Files/btl_logo.jpg" style="height: 50px; width: 165px;" /> *@
+            <img src="" style="height: 50px; width: 165px;" class="imgCompanyLogo" />
+        </a>
+
+        <div class="d-flex align-items-center">
+            <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+                <span></span>
+            </button>
+            <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+                <span class="svg-icon svg-icon-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24" />
+                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        </g>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-root">
+        <div class="d-flex flex-row flex-column-fluid page">
+            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto hadish_kt_aside" id="kt_aside">
+                @* Remove after EID style="margin-top: 37px;"*@
+                <div class="brand flex-column-auto" id="kt_brand">
+                    <!--begin::Logo-->
+                    <a href="@Url.Action("Default", "Security")" class="brand-logo">
+                        @* <img src="~/Files/btl_logo.jpg" style="height: 50px; width: 165px;" /> *@
+                        <img src="" style="height: 50px; width: 165px;" class="imgCompanyLogo" />
+                    </a>
+                    <!--end::Logo-->
+
+                    <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle2"
+                            data-kt-toggle="true"
+                            data-kt-toggle-target="body"
+                            data-kt-toggle-name="aside-minimize">
+                        <span class="svg-icon svg-icon svg-icon-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999)" />
+                                    <path d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999)" />
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper" style="overflow:hidden !important;">
+                    @*Ashraful*@
+                    <div id="kt_aside_menu" class="aside-menu" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500" style="overflow:hidden !important;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                <div id="kt_header" class="header header-fixed">
+                    <div class="container-fluid d-flex align-items-stretch justify-content-between hadish_kt_wrapper">
+                        @* Remove after EID style="margin-top:40px;"*@
+                        <div class="col-8" style="text-align:center">
+                            <span id="spnPageTitle" class="clock" style="line-height:50px;font-weight:bold;font-size:16px;"></span>
+                        </div>
+
+                        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+                            <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default"></div>
+                        </div>
+
+                        <div class="topbar">
+                            <div class="topbar-item">
+                                <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle" style="font-weight:700 !important;margin-top: 5px;">
+                                    <img src="~/files/usr1.jpg" id="profilePic" width="50" height="50" class="avatar" style="float: left">
+                                    &nbsp;&nbsp;
+                                    @*  ~/files/usr1.jpg *@
+
+                                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1" style="color: #008093 !important;font-weight: 700 !important;text-transform: capitalize;">@Model.UserList[0].EmployeeName.ToString()   [@Model.UserList[0].UserName.ToString()]</span>
+                                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">
+                                    </span>
+
+                                </div>
+                                <a href="../Security/Logout" type="button" id="btnLogOff" value="LogOff">
+                                    @* <img width="30" height="25" src="../images/logout.jpg" /> *@
+                                    <i class="fas fa-sign-out-alt" style="margin-top: 5px; margin-left: 10px; font-size: 30px;color: #008093 !important;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content d-flex flex-column flex-column-fluid hadish_kt_content" id="kt_content">
+                    @* Remove after EID style="margin-top: 33px;"*@ 
+
+                    <div class="subheader py-2 py-lg-6 subheader-solid hadish_kt_subheader" id="kt_subheader">
+                        @* Remove after EID style="margin-top: 36px"*@
+                        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                            <div class="d-flex align-items-center flex-wrap mr-1">
+                                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                                        <li class="breadcrumb-item text-muted" style="font-weight: 700; color:black !important;">
+                                            <a href="#" class="text-muted" style="font-weight: 700; color:#008093 !important;">@ViewBag.MenuTitle</a>
+                                        </li>
+                                        <li class="breadcrumb-item text-muted bcMenuTitle2" style="">
+                                            <a href="#" class="text-muted bcMenuTitle2" style="">@ViewBag.MenuTitle2</a>
+                                        </li>
+
+                                        @{
+                                            if (@ViewBag.MenuTitle3 != "")
+                                            {
+                                                <li class="breadcrumb-item text-muted bcMenuTitle3" style="">
+                                                    <a href="#" class="text-muted bcMenuTitle3" style="">@ViewBag.MenuTitle3</a>
+                                                </li>
+
+                                                {
+                                                    if (@ViewBag.MenuTitle4 != "")
+                                                    {
+                                                        <li class="breadcrumb-item text-muted bcMenuTitle4" style="">
+                                                            <a href="#" class="text-muted bcMenuTitle4" style="">@ViewBag.MenuTitle4</a>
+                                                        </li>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*begin::Entry*@
+                    @RenderBody()
+                    @*end::Entry*@
+                </div>
+
+                <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+                    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2" style="color:#008093 !important;">&copy; @DateTime.Now.Year</span>
+                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary" style="color:#008093 !important;">- All right reserved Badsha Group</a>
+                        </div>
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2" style="color:#008093 !important;">Developed By</span>
+                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary" style="color:#008093 !important;">- Badsha Group IT Department</a>
+                        </div>
+                        <div class="nav nav-dark"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin::User Panel-->
+    <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
+        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
+            <h3 class="font-weight-bold m-0">
+                User Profile
+                @*<small class="text-muted font-size-sm ml-2">12 messages</small>*@
+            </h3>
+            <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                <i class="ki ki-close icon-xs text-muted"></i>
+            </a>
+        </div>
+
+        <div class="offcanvas-content pr-5 mr-n5">
+            <div class="d-flex align-items-center mt-5">
+                <div class="symbol symbol-100 mr-5">
+                    <img id="divAvatar" src"" alt="No Image" class="rounded-circle imgEmployee" width="100" height="100" style="border: 2px solid #1984c8;">
+                    <i class="symbol-badge bg-success"></i>
+                </div>
+                <div class="d-flex flex-column">
+                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
+                        @*@HttpContextAccessor.HttpContext.Session.GetString("User_Name")*@
+                    </a>
+
+                    <div class="navi mt-2">
+                        <a href="@Url.Action("LogOut", "Security")" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" id="logoutButton">LOG OUT</a>
+                        <a href="@Url.Action("ChangePassword", "Security", new { menuId = "346", pageName = "ChangePassword" })" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" id="logoutButton">CHANGE PASSWORD</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var KTAppSettings = {
+            "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 },
+            "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins"
+        };
+    </script>
+
+    <script src="~/theme/assets/plugins/global/plugins.bundle1894.js"></script>
+    <script src="~/theme/assets/plugins/custom/prismjs/prismjs.bundle1894.js"></script>
+    <script src="~/theme/assets/js/scripts.bundle1894.js"></script>
+    <script src="~/theme/assets/js/pages/crud/forms/widgets/select21894.js"></script>
+    <script src="~/theme/assets/js/pages/crud/forms/widgets/bootstrap-datepicker1894.js"></script>
+    <script src="~/common/kendoui2021/kendo/kendo.all.min.js"></script>
+    <script src="~/common/kendoui2021/kendo/kendo.web.min.js"></script>
+    <script src="~/common/kendoui2021/kendo/jszip.min.js"></script>
+
+    <script src="~/common/js/utilitycommon.js?version=@version"></script>
+
+    <script src="~/common/amcharts/amcharts.js"></script>
+    <script src="~/common/amcharts/serial.js"></script>
+    <script src="~/common/amcharts/plugins/animate/animate.min.js"></script>
+    <script src="~/common/amcharts/pie.js"></script>
+    <script src="~/common/amcharts/plugins/export/export.js"></script>
+    <script src="~/common/amcharts/plugins/export/libs/xlsx/xlsx.min.js"></script>
+
+    <!--end::Custom define-->
+    @RenderSection("section_footer")
+
+    @*page loading circle plugin*@
+    <script src="~/common/page_loading_circle/libpageloadingcircle.min.js?version=@version"></script>
+    <script src="~/common/js/menu.js?version=@version"></script>
+</body>
+</html>
+

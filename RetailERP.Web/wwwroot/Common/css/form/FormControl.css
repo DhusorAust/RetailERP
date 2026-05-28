@@ -1,0 +1,1324 @@
+﻿
+/*.field-validation-error {
+    float: right !important;
+   
+    height: 10px;
+    color: #eb525d;
+    padding-top: 8px;
+    font-weight: bold;
+    font-size: 11px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-right: 5px;
+}
+.error {
+    float: right !important;
+   
+    height: 10px;
+    color: #eb525d;
+    padding-top: 8px;
+    font-weight: bold;
+    font-size: 11px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-right: 5px;
+}
+
+span.error {
+    visibility: hidden;
+}
+
+.ibserror {
+    position: absolute;
+    z-index: 1;
+    bottom: -15px;
+    color: #eb525d;
+    font-size: 11px;
+    display: none;
+}
+
+.text-danger {
+    float: right !important;
+   
+    height: 10px;
+    color: #eb525d;
+    padding-top: 8px;
+    font-weight: bold;
+    font-size: 11px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-right: 5px;
+}*/
+.form-inner {
+    padding: 0px;
+    margin-bottom: 3px;
+}
+    .form-inner .left-col {
+        padding: 0px !important;
+    }
+
+.form-inner30 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner30 .left-col {
+        width: 300px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner30 .right-col {
+        float: left;
+        width: calc(100% - 305px);
+        position: relative;
+    }
+
+    .form-inner30 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+
+.form-inner26 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner26 .left-col {
+        width: 260px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner26 .right-col {
+        float: left;
+        width: calc(100% - 265px);
+        position: relative;
+    }
+
+    .form-inner26 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner25 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner25 .left-col {
+        width: 250px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner25 .right-col {
+        float: left;
+        width: calc(100% - 255px);
+        position: relative;
+    }
+
+    .form-inner25 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner21 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner21 .left-col {
+        width: 210px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner21 .right-col {
+        float: left;
+        width: calc(100% - 215px);
+        position: relative;
+    }
+
+    .form-inner21 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner20 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner20 .left-col {
+        width: 200px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner20 .right-col {
+        float: left;
+        width: calc(100% - 205px);
+        position: relative;
+    }
+
+    .form-inner20 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner19 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner19 .left-col {
+        width: 190px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner19 .right-col {
+        float: left;
+        width: calc(100% - 195px);
+        position: relative;
+    }
+
+    .form-inner19 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+
+.form-inner18 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner18 .left-col {
+        width: 180px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner18 .right-col {
+        float: left;
+        width: calc(100% - 185px);
+        position: relative;
+    }
+
+    .form-inner18 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner17 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner17 .left-col {
+        width: 170px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner17 .right-col {
+        float: left;
+        width: calc(100% - 175px);
+        position: relative;
+    }
+
+    .form-inner17 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner16 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner16 .left-col {
+        width: 160px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner16 .right-col {
+        float: left;
+        width: calc(100% - 165px);
+        position: relative;
+    }
+
+    .form-inner16 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+
+.form-inner15 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner15 .left-col {
+        width: 150px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner15 .right-col {
+        float: left;
+        width: calc(100% - 155px);
+        position: relative;
+    }
+
+    .form-inner15 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner14 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner14 .left-col {
+        width: 140px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner14 .right-col {
+        float: left;
+        width: calc(100% - 145px);
+        position: relative;
+    }
+
+    .form-inner14 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner13 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner13 .left-col {
+        width: 130px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner13 .right-col {
+        float: left;
+        width: calc(100% - 135px);
+        position: relative;
+    }
+
+    .form-inner13 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner12 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner12 .left-col {
+        width: 120px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner12 .right-col {
+        float: left;
+        width: calc(100% - 125px);
+        position: relative;
+    }
+
+    .form-inner12 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+
+.form-inner11 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner11 .left-col {
+        width: 110px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner11 .right-col {
+        float: left;
+        width: calc(100% - 115px);
+        position: relative;
+    }
+
+    .form-inner11 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner10 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner10 .left-col {
+        width: 100px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner10 .right-col {
+        float: left;
+        width: calc(100% - 105px);
+        position: relative;
+    }
+
+    .form-inner10 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner9 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner9 .left-col {
+        width: 90px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner9 .right-col {
+        float: left;
+        width: calc(100% - 95px);
+        position: relative;
+    }
+
+    .form-inner9 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner8 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner8 .left-col {
+        width: 80px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner8 .right-col {
+        float: left;
+        width: calc(100% - 85px);
+        position: relative;
+    }
+
+    .form-inner8 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner7 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner7 .left-col {
+        width: 70px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner7 .right-col {
+        float: left;
+        width: calc(100% - 75px);
+        position: relative;
+    }
+
+    .form-inner7 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner6 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner6 .left-col {
+        width: 60px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner6 .right-col {
+        float: left;
+        width: calc(100% - 65px);
+        position: relative;
+    }
+
+    .form-inner6 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner5 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner5 .left-col {
+        width: 50px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner5 .right-col {
+        float: left;
+        width: calc(100% - 55px);
+        position: relative;
+    }
+
+    .form-inner5 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner4 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner4 .left-col {
+        width: 40px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner4 .right-col {
+        float: left;
+        width: calc(100% - 45px);
+        position: relative;
+    }
+
+    .form-inner4 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner3 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner3 .left-col {
+        width: 30px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner3 .right-col {
+        float: left;
+        width: calc(100% - 35px);
+        position: relative;
+    }
+
+    .form-inner3 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+.form-inner2 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner2 .left-col {
+        width: 20px;
+        margin-right: 5px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right; /*margin-top:3px;*/
+    }
+
+    .form-inner2 .right-col {
+        float: left;
+        width: calc(100% - 25px);
+        position: relative;
+    }
+
+    .form-inner2 .in-ctrl {
+        width: calc(100% - 10px);
+        float: left;
+    }
+
+
+.form-inner-button13 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button13 .left-col {
+        width: 130px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button13 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 140px);
+        width: -webkit-calc(70% - 140px);
+        width: calc(70% - 140px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button13 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button13 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+.form-inner-button12 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button12 .left-col {
+        width: 120px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button12 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 130px);
+        width: -webkit-calc(70% - 130px);
+        width: calc(70% - 130px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button12 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button12 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+.form-inner-button11 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button11 .left-col {
+        width: 110px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button11 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 120px);
+        width: -webkit-calc(70% - 120px);
+        width: calc(70% - 120px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button11 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button11 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+.form-inner-button10 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button10 .left-col {
+        width: 100px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button10 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 110px);
+        width: -webkit-calc(70% - 110px);
+        width: calc(70% - 110px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button10 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button10 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+.form-inner-button9 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button9 .left-col {
+        width: 90px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button9 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 100px);
+        width: -webkit-calc(70% - 100px);
+        width: calc(70% - 100px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button9 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button9 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+.form-inner-button8 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button8 .left-col {
+        width: 80px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button8 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 90px);
+        width: -webkit-calc(70% - 90px);
+        width: calc(70% - 90px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button8 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button8 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+.form-inner-button7 {
+    width: 100%;
+    margin-bottom: 2px;
+    display: block;
+    clear: both;
+}
+
+    .form-inner-button7 .left-col {
+        width: 70px;
+        margin-right: 10px;
+        float: left; /*font-size:13px !important;*/
+        text-align: right;
+        margin-top: 3px;
+    }
+
+    .form-inner-button7 .middle-col {
+        float: left;
+        width: -moz-calc(70% - 80px);
+        width: -webkit-calc(70% - 80px);
+        width: calc(70% - 80px);
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .form-inner-button7 .right-col {
+        float: left;
+        width: 100px;
+        position: relative;
+    }
+
+    .form-inner-button7 .in-ctrl {
+        width: -moz-calc(100% - 15px);
+        width: -webkit-calc(100% - 15px);
+        width: calc(100% - 15px);
+        float: left;
+    }
+
+@media only screen and (max-width: 768px) {
+    .form-inner13 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner13 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner12 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner12 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner11 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner11 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner10 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner10 .right-col {
+        float: none;
+        width: 100%;
+        /*width: 100% !important;*/
+    }
+
+    .form-inner9 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner9 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner9 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner9 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner8 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner8 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner7 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner7 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner6 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner6 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner5 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner5 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner4 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner4 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner-button12 .left-col {
+        width: 100% !important;
+        margin-right: 0px;
+        float: none; /*font-size:14px !important;*/
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .form-inner-button12 .middle-col {
+        float: none;
+        width: 100% !important;
+    }
+
+    .form-inner-button12 .right-col {
+        float: none;
+        width: 100% !important;
+    }
+}
+
+
+/*.select2-offscreen, .select2-offscreen:focus {
+    padding: 1px !important;
+    border: 1px solid #000000 !important;
+}
+textarea {
+    resize: vertical;
+}
+
+.custom-btn1 {
+    font-family: 'Montserrat';
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 90px;
+    margin-right: 8px;
+    border: 1px solid #000000 !important;
+}
+
+.custom-btn2 {
+    font-family: 'Montserrat';
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 8px;
+}
+
+.custom-btn3 {
+    font-family: 'Montserrat';
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 110px;
+    margin-right: 8px;
+}
+
+.custom-btn4 {
+    font-family: 'Montserrat';
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 150px;
+    margin-right: 8px;
+}
+.custom-small-btn1 {
+    font-family: 'Montserrat';
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 5px;
+    width:50px;
+    margin-right:8px;
+}
+
+.btn-success, .btn-success:focus {
+    background-color: #0090d9 !important;
+    border-color: #0090d9 !important;
+    color: #ffffff !important;
+    font-family: 'Montserrat' !important;
+    font-size: 11px !important;
+}
+    .btn-success.hover, .btn-success:hover, .open .dropdown-toggle.btn-success {
+        color: #ffffff !important;
+        background-color: #118ac7 !important;
+        border-color: #118ac7 !important;
+    }
+
+    .btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success.active[disabled], fieldset[disabled] .btn-success.active {
+        background-color: #cccccc !important;
+        border-color: #cccccc !important;
+        color: #1a1a1a;
+    }
+
+.MISTABLE3 td, th {
+    background: #005fbf !important;
+}*/
+/*Start:: Html Table*/
+
+/*.table tbody tr td {
+    padding: 7px 12px 7px 12px !important;
+    font-size: 13px !important;
+}
+
+.table thead tr th {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 11px;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    vertical-align: middle;
+    border-bottom: 1px solid #000000 !important;
+    color: #ffffff !important;
+}
+
+.table thead tr th:first-child {
+    padding-left:2px !important;
+} 
+
+.table-custom-configure > td {
+    opacity: .6;
+    transition: opacity ease 0.3s;
+    font-family: 'Montserrat';
+    font-size: 10px !important;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+.nav-tabs-fillup ~ .tab-content {
+    background: #f5f5f5 !important;
+}
+
+
+
+.treeview-wrap {
+    border: solid 1px #e4e3e3;
+    padding-top: 4px;
+    overflow: auto;
+}
+
+.treeview ul li span:hover {
+    background-color: #e4e3e3;
+}
+.treeview-wrap .chart-of-account-title {
+   
+}
+
+.treeview {
+    display: block;
+    overflow: auto;
+}
+    .treeview .collapse {
+        width: 15px;
+        background: url('../treeview/ui-icons_454545_256x240.png') no-repeat center right;
+        background-repeat: no-repeat;
+        background-position: -36px -14px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .treeview .expand {
+        width: 15px;
+        background: url('../treeview/ui-icons_454545_256x240.png') no-repeat center right;
+        background-repeat: no-repeat;
+        background-position: -45px -13px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .treeview ul {      
+        margin: 0px;
+        padding-left: 10px;
+        list-style: none;
+    }
+
+    .treeview > li > a {      
+        font-family: 'Segoe UI';
+        font-weight: normal;
+        font-size: 13px !important;
+        color: #626262;
+        min-height: 1em;
+    }
+
+    .treeview li a {
+        padding: 4px;       
+        display: inline-block;      
+        font-family: 'Segoe UI';
+        font-weight: normal;
+        font-size: 13px !important;       
+        min-height: 1em;
+    }
+
+.custree-span:hover {
+    background: transparent !important;
+}
+
+.alert .close {
+    width: 10px;
+    height: 9px;
+    position: relative;
+    opacity: 0.8;
+    top: 0px !important;
+    float: right;
+    margin-left: 20px;
+    font-size: 13px;
+    color: #933432;
+}
+
+.get-edit {
+    font-weight: 600 !important;
+}
+
+.lead {
+    margin-bottom: 0px !important;
+}
+
+.widget-6 {
+    background-color: #626262;
+}
+.widget-1:after {
+    background-image: none !important;
+    background-size: cover;
+    content: " ";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: relative;
+    z-index: 0;
+    opacity: 1;
+}*/
+
+/*grid button re-size*/
+
+.k-grid tbody .k-button {
+    min-width: 37px !important;
+    vertical-align: center !important;
+}
+
+/* kendo date picker css start*/
+.k-autocomplete, .k-block, .k-calendar-container, .k-colorpicker, .k-combobox, .k-datepicker, .k-datetimepicker, .k-drag-clue, .k-dropdown, .k-dropdown-wrap, .k-editor-inline, .k-gantt-views, .k-gantt-views > .k-current-view, .k-grid .k-filter-options, .k-grouping-header .k-group-indicator, .k-inline-block, .k-list-container, .k-multiselect, .k-numeric-wrap, .k-numerictextbox, .k-picker-wrap, .k-slider-selection, .k-slider-track, .k-textbox, .k-timepicker, .k-touch-scrollbar, .k-treeview .k-in, .k-upload {
+    border-radius: 0px !important;
+}
+
+.k-widge {
+    border-color: #007385 !important;
+}
+
+.k-autocomplete, .k-dropdown-wrap.k-state-default, .k-numeric-wrap.k-state-default, .k-picker-wrap.k-state-default {
+    background-image: url(textures/highlight.png);
+    background-image: none, linear-gradient(to bottom, rgba(255, 255, 255, .4) 0, rgba(255, 255, 255, 0) 100%);
+    background-position: 50% 50%;
+    background-color: #deeef5;
+    border-color: #007385 !important;
+}
+
+.checkbox > span {
+    background-color: #fff;
+}
+
+.date_icon_remove .k-datepicker .k-select {
+    display: none !important;
+}
+
+
+.date_icon_remove .k-dropdown-wrap, .dateClass .k-numeric-wrap, .k-picker-wrap {
+    padding-right: 0em !important;
+}
+
+/* kendo date picker css end*/

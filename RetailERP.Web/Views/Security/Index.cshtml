@@ -1,0 +1,392 @@
+@{
+    var version = Guid.NewGuid().ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta name="description" content="Login page example" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="shortcut icon" href="~/Files/favicon.ico" />
+
+    <link href="~/common/css/form/fonts.googleapis.css" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/login.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/plugins.bundle.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/prismjs.bundle.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/style.bundle.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/light.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/light-menu.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/dark.css?version=@version" rel="stylesheet" />
+    <link href="~/theme/assets/loginv2/dark-aside.css?version=@version" rel="stylesheet" />
+
+    <script src="~/common/kendoui2021/kendo/jquery-3.6.0.min.js"></script>
+
+    <style>
+        .modal-content {
+            top: 0;
+            bottom: 0;
+            position: absolute;
+        }
+
+        @@media (min-width: 1200px) and (max-width: 2000px) {
+            .modal-dialog {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100%;
+                margin: 0px !important;
+            }
+
+            .modal-content {
+                top: 0;
+                bottom: 0;
+                position: absolute;
+            }
+        }
+
+        /*@@media (min-width: 2000px) {
+                            .container, .container-lg, .container-md, .container-sm, .container-xl {
+                                max-width: 100% !important;
+                            }
+                        }*/
+
+        .animate-charcter {
+            margin-top: 320px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            background-image: linear-gradient( -225deg, #ffff 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
+            background-size: auto auto;
+            background-clip: border-box;
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 2s linear infinite;
+            display: inline-block;
+            font-size: 90px;
+            font-family: Calibri
+        }
+
+        @@keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+    </style>
+
+    <style>
+        .fun-bg-img {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensure the body takes up the full viewport height */
+            background-size: cover; /* Adjust according to your needs */
+            background-position: center; /* Adjust according to your needs */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: 100% 100%;
+            /*opacity: .5;*/
+        }
+
+        .otpButton {
+            /* box-shadow: -1px 0px 0px 0px #9fb4f2;
+                            background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%); */
+            background-color: #7892c2;
+            /* border-radius: 18px; */
+            border: 1px solid #4e6096;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 17px;
+            padding: 3px 13px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #283966;
+        }
+
+            .otpButton:hover {
+                background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+                background-color: #476e9e;
+            }
+
+            .otpButton:active {
+                position: relative;
+                top: 1px;
+            }
+
+        .displayNone {
+            display: none;
+        }
+
+
+        /* 	contactus icon */
+
+        .contact-us {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .contact-us .phone {
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+            color: #fff;
+            background-color: #003399;
+            padding: 8px 14px;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-us .phone:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-us .phone i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        /* 	contactus icon */
+
+    </style>
+
+</head>
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    @* 	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>  *@
+
+
+
+    <div class="d-flex flex-column flex-root">
+        <div class="login login-3 login-signin-on d-flex flex-row-fluid" id="kt_login">
+            <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid fun-bg-img" style="background-image: url(../../Files/Login_12.jpg);">
+                @* <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid fun-bg-img" style="background-image: url(../../Files/Holidays/Eid2025.png);"> *@
+                @*Login-1.png*@
+                <div class="login-form text-center text-white p-7 position-relative overflow-hidden" style="margin-top:-30px !important; opacity:unset !important;">
+                    @* <div class="d-flex flex-center mb-15" style="">
+						<a href="#">
+							<img src="~/Files/logo.png" width="250px;" class="max-h-100px" alt="" />
+						</a>
+					</div> *@
+
+                    <div class="mbll-10" style="border-radius: 4px;margin-bottom: 10px; border-bottom: 3px solid #f64e60;">
+                        <span style="color: #ffffff; font-weight: 900; letter-spacing: 1px; font-size:22px;font-family:'Montserrat'">
+                            <i class='fas fa-store' style='font-size:35px;color:red'></i>
+                        </span>
+                        <span style="color: #ffee00;font-weight: 900;font-size: 43px; font-family:'Montserrat'">RETAIL</span>
+                        <span style="color: #ffffff;font-weight: 900;font-size: 22px;letter-spacing: 4px;font-family:'Montserrat';margin-left: -5PX;">
+                            ERP
+                        </span>
+                    </div>
+
+                    @* background-color: #1630255e; *@
+                    <div class="login-signin" style="border-radius: 4px; padding: 5px !important; border-top: 3px solid #ffee00; padding-top: 15px !important;">
+                        <div class="mb-20" style="display:none;">
+                            <h3 style="color: #ffffff; font-weight: 900;">
+                                Sign in To Retail ERP
+                            </h3>
+                            <p class="font-weight-bold" style="color: #ffffff; font-weight: 600 !important;">Enter your details to login to your account</p>
+                        </div>
+                        <form class="form" id="kt_login_signin_form">
+                            <div class="form-group">
+                                <input class="form-control h-auto rounded-pill py-4 px-8 mb-5" type="text" placeholder="User Name" id="UserID" name="UserID" autocomplete="off"
+                                       style="font-weight:900 !important; border: 1.5px solid #0000 !important; background-color: #ffffff !important;" />
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control h-auto rounded-pill py-4 px-8 mb-5" type="password" placeholder="Password" id="PasswordH" name="password"
+                                       style="font-weight:900 !important; border: 1.5px solid #0000 !important; background-color: #ffffff !important;" />
+                            </div>
+                            <div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8" style="display:none !important;">
+                                <div class="checkbox-inline">
+                                    <label class="checkbox text-white m-0" style="color: #ffffff !important; font-weight: 900;">
+                                        <input type="checkbox" name="remember" />
+                                        <span></span>Remember me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group displayNone" id="divOTP">
+                                <input class="form-control h-auto rounded-pill py-4 px-8 mb-5" type="text" placeholder="Please input OTP" id="txtOTP" name="loginotp"
+                                       style="font-weight:900 !important; border: 1.5px solid #0000 !important; background-color: #ffffff !important;" />
+
+                                <button type="button" id="btnGenerateOTP" class="otpButton" style="margin-bottom: 10px;">Generate <span style="font-weight:900 !important; color:#f64e60;">OTP</span> </button>
+                                <br />
+                                <span style="font-size:16px; font-weight: 700;">OTP will be send to your official Mobile & Email</span>
+
+                            </div>
+                            <div class="form-group text-center mt-10" style="margin-bottom: 8px !important;">
+                                <div id="btnSubmit" class="btn btn-pill btn-outline-white font-weight-bold px-15 py-3"
+                                     style="background-color: #ffffff; font-weight: 900 !important; color: black; border: 1.5px solid #0000 !important;font-size:14px; ">
+                                    Sign In
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none; width:100% !important">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="background-color:black;">
+                    <div id="example" align="center" class="animate__rubberBand">
+                        <p class="animate-charcter">WELCOME TO RETAIL ERP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>var HOST_URL = "/";</script>
+
+
+  @*   <div class="contact-us">
+        <a href="tel:+880123456789" class="phone">
+            <i class="fas fa-phone" aria-hidden="true"> HelpLine : 1321(Aziz), 1425(Ashraful), 1424(Mehedi)</i>
+        </a>
+    </div> *@
+
+    <script>
+        var KTAppSettings = {
+            "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 },
+            "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins"
+        };
+    </script>
+
+    <script src="~/theme/assets/loginv2/plugins.bundle.js?version=@version"></script>
+    <script src="~/theme/assets/loginv2/prismjs.bundle.js?version=@version"></script>
+    <script src="~/theme/assets/loginv2/scripts.bundle.js?version=@version">></script>
+    <script src="~/theme/assets/loginv2/login-general.js?version=@version"></script>
+    <script src="~/common/animationjs/jquery.fireworks.js?version=@version"></script>
+
+    @*OTP JS*@
+    <script src="~/common/js/smsgetway.js?version=@version"></script>
+    @*Custom Library*@
+    <script src="~/common/js/utilitycommon.js?version=@version"></script>
+
+    <script src="~/chem/security/userlogin.js"></script>
+
+    <script>
+        $.ajaxSetup({
+            async: false
+        });
+
+        var base = '@Url.Content("~/")';
+
+        var IndexValues = ['UserID', 'PasswordH', 'btnSubmit', 'idForgot_Password'];
+        SetTabIndex(IndexValues);
+
+        //$(document).keypress(function (event) {
+        //    var keycode = (event.keyCode ? event.keyCode : event.which);
+        //    if (keycode == '13') {
+        //        if (IsFrmValid()) {
+        //            // For OTP
+        //            //checkIsOfficeIP();
+        //            loginContinue();
+        //        } else {
+        //            Warning("Login operation failed.", "Warning");
+        //        }
+        //    }
+        //});
+
+        $(document).ready(function () {
+
+            UserLoginHelper.InitUserLogin();
+
+            // $("#UserID").bind("keypress", function (e) {
+            // 	if (e.keyCode == 13) {
+            // 		$('#PasswordH').focus();
+            // 	}
+            // });
+
+            // $("#PasswordH").bind("keypress", function (e) {
+            // 	if (e.keyCode == 13) {
+            // 		if (IsFrmValid()) {
+            // 			// For OTP
+            // 			//checkIsOfficeIP();
+            // 			loginContinue();
+            // 		} else {
+            // 			Warning("Login operation failed.", "Warning");
+            // 		}
+            // 	}
+            // });
+
+            // $('#btnSubmit').click(function (e) {
+            // 	e.preventDefault();
+            // 	if (IsFrmValid()) {
+
+            // 		//For OTP
+            // 		//checkIsOfficeIP();
+            // 		loginContinue();
+            // 	} else {
+            // 		MessageHelper.Warning("Login operation failed.", "Warning");
+            // 	}
+            // });
+
+        });
+
+        function loginContinue() {
+            $.ajax({
+                type: "POST",
+                url: base + "Security/GetLogin",
+                data: { UserName: $("#UserID").val(), PasswordH: $("#PasswordH").val() },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.isCompleted == true) {
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        MessageHelper.Warning("Login operation failed.", "Warning");
+                    }
+                },
+                error: function (req, status, error) {
+                    MessageHelper.Warning(error, "Warning");
+                }
+            });
+        }
+
+        function IsFrmValid() {
+            var isValidItem = true;
+            if ($('#UserID').val() == "") {
+                isValidItem = false;
+                $('#Err_UserId').show();
+            }
+            else {
+                $('#Err_UserId').hide();
+            }
+            if ($('#PasswordH').val() == "") {
+                isValidItem = false;
+                $('#Err_Password').show();
+            }
+            else {
+                $('#Err_Password').hide();
+            }
+            if (!isValidItem) {
+                ToastrMessageHelper.ValidationToastr("Please fill-up mandatory field.");
+            }
+            return isValidItem;
+        }
+
+        function SetTabIndex(IndexValues) {
+            $.each(IndexValues, function (i, obj) {
+                i = parseInt(i) + 1;
+                $("#" + obj).attr('tabindex', i);
+            });
+        }
+    </script>
+</body>
+</html>
+

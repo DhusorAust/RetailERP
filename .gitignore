@@ -1,0 +1,27 @@
+# Build output
+**/bin/
+**/obj/
+
+# IDE/user files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Local packages and frontend dependencies
+node_modules/
+**/node_modules/
+
+# Publish output and profiles
+**/PublishProfiles/
+*.pubxml.user
+
+# Runtime logs
+*.log
+retailerp-run.out.log
+retailerp-run.err.log
+
+# Local generated artifacts
+artifacts/verify-build/

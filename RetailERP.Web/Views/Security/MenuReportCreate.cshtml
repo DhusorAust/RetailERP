@@ -1,0 +1,175 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+    {
+    <link href="~/common/menutree/dist/themes/default/style.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        localStorage.setItem("pageName", "@ViewBag.PageName");
+        localStorage.setItem("menuId", "@ViewBag.MenuId");
+    </script>
+}
+@{
+    var pageId = ViewBag.PageName + "-" + ViewBag.MenuId;
+    var divToolbarId = "divtoolbar" + pageId;
+    var toolbarId = "toolbar" + pageId;
+    var tblMasterId = "tbl" + pageId;
+    var tblChildId = "tblChild" + pageId;
+    var formId = "form" + pageId;
+    var divDetailsId = "divDetails" + pageId;
+}
+
+<div class="d-flex flex-column-fluid" id="@pageId">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;">
+                    <form class="form" id="@formId">
+                        <div class="card-body" id="@divDetailsId" style="display:block">
+                            <div class="card-header" style="padding:0px;">
+                                <h6 class="card-title" style="margin-bottom:5px;"> General Information</h6>
+                            </div>
+
+                            <div class="row" style="padding-bottom:10px;">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div style="float:left; width:100%; overflow:auto; padding:10px; text-decoration:none; padding:10px; border:1px solid #ccc; border-radius:10px; margin-left:10px;height:500px; overflow:auto;"
+                                         id="tree" name="tree">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 10px; padding-top: 10px; background-color: #e86565;">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#fff;">Menu Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="margin:0px auto;">
+                <input type="hidden" id="MenuReportID" value="-1111" />
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner11">
+                                        <label class="left-col col-form-label text-lg-right">Project</label>
+                                        <div class="right-col">
+                                            <select class="form-control cls-select" name="ProjectID" id="ProjectID"></select>
+                                            <span class="form-text text-muted ProjectID">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner11">
+                                        <label class="left-col col-form-label text-lg-right">Project Module</label>
+                                        <div class="right-col">
+                                            <select class="form-control cls-select" name="ProjectModuleID" id="ProjectModuleID"></select>
+                                            <span class="form-text text-muted ProjectModuleID">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner11">
+                                        <label class="left-col col-form-label text-lg-right">Controller</label>
+                                        <div class="right-col">
+                                            <input type="text" class="form-control" placeholder="" id="Controller" />
+                                            <span class="form-text text-muted Controller">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner11">
+                                        <label class="left-col col-form-label text-lg-right">View Name</label>
+                                        <div class="right-col">
+                                            <input type="text" class="form-control" placeholder="" id="ViewName" />
+                                            <span class="form-text text-muted ViewName">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner11">
+                                        <label class="left-col col-form-label text-lg-right">Display Name</label>
+                                        <div class="right-col">
+                                            <input type="text" class="form-control" placeholder="" id="MenuHead" />
+                                            <span class="form-text text-muted MenuHead">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner13">
+                                        <label class="left-col col-form-label text-lg-right">Report File Name</label>
+                                        <div class="right-col">
+                                            <input type="text" class="form-control" placeholder="" id="DevExpressReportName" />
+                                            <span class="form-text text-muted DevExpressReportName">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner13">
+                                        <label class="left-col col-form-label text-lg-right">Procedure Name</label>
+                                        <div class="right-col">
+                                            <input type="text" class="form-control" placeholder="" id="ReportProcedureName" />
+                                            <span class="form-text text-muted ReportProcedureName">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <div class="form-inner13">
+                                        <label class="left-col col-form-label text-lg-right">Remarks</label>
+                                        <div class="right-col">
+                                            <input type="text" class="form-control" placeholder="" id="Remarks" />
+                                            <span class="form-text text-muted Remarks">required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="float">
+                <div class="btn btn-primary mr-2 btn-custom" id="btnSave">Save</div>
+                <div class="btn btn-danger btn-custom" id="btnClose" data-dismiss="modal">Close</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section section_footer
+    {
+    <script src="~/common/menutree/dist/jstree.min.js"></script>
+    <script src="~/btl/security/MenuReportCreate.js?version=@version"></script>
+}
+

@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <title>@ViewBag.ReportHeader</title>
+</head>
+
+<link asp-append-version="true" href="~/node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet" />
+<link asp-append-version="true" href="~/node_modules/devextreme/dist/css/dx.common.css" rel="stylesheet" />
+<link asp-append-version="true" href="~/node_modules/devextreme/dist/css/dx.light.css" rel="stylesheet" />
+<link asp-append-version="true" href="~/node_modules/@@devexpress/analytics-core/dist/css/dx-analytics.common.css" rel="stylesheet" />
+<link asp-append-version="true" href="~/node_modules/@@devexpress/analytics-core/dist/css/dx-analytics.light.css" rel="stylesheet" />
+<link asp-append-version="true" href="~/node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css" rel="stylesheet" />
+<script asp-append-version="true" src="~/node_modules/jquery/dist/jquery.js"></script>
+<script asp-append-version="true" src="~/node_modules/jquery-ui-dist/jquery-ui.js"></script>
+<script asp-append-version="true" src="~/node_modules/knockout/build/output/knockout-latest.js"></script>
+<script asp-append-version="true" src="~/node_modules/devextreme/dist/js/dx.all.js"></script>
+<script asp-append-version="true" src="~/node_modules/@@devexpress/analytics-core/dist/js/dx-analytics-core.min.js"></script>
+<script asp-append-version="true" src="~/node_modules/devexpress-reporting/dist/js/dx-webdocumentviewer.min.js"></script> 
+
+@*<script src="~/node_modules/cldrjs/dist/cldr.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr/event.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr/supplemental.js"></script>
+<script src="~/node_modules/cldrjs/dist/cldr/unresolved.js"></script>
+<script src="~/node_modules/globalize/dist/globalize.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/message.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/number.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/currency.js"></script>
+<script src="~/node_modules/globalize/dist/globalize/date.js"></script>
+
+<script src="~/node_modules/devextreme/dist/js/dx.all.js"></script>
+<script src="~/node_modules/@@devexpress/analytics-core/dist/js/dx-analytics-core.min.js"></script>
+<script src="~/node_modules/devexpress-reporting/dist/js/dx-webdocumentviewer.min.js"></script>
+
+
+
+
+
+@using wwwReports*@
+
+
+<script type="text/javascript" id="script">
+    function customizeParameterEditors(s, e) {
+        if (e.parameter.type === 'System.DateTime') {
+            e.info.editor = $.extend({}, e.info.editor);
+            e.info.editor.extendedOptions =
+                $.extend(e.info.editor.extendedOptions || {},
+                    { type: 'date' }, { displayFormat: 'dd-MMM-yyyy' });
+
+        };
+    }
+</script>
+
+
+@* @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1400px").ExportSettings(settings =>{ settings.ShowPrintNotificationDialog = false;}).Bind(ViewBag.ReportName) *@
+@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1400px").ClientSideEvents(configure => { configure.CustomizeParameterEditors("customizeParameterEditors"); }).ExportSettings(settings => { settings.ShowPrintNotificationDialog = false; }).Bind(ViewBag.ReportName)
+
+<script>
+      function InitDevExWebDocumentViewer(s, e) {
+        s.previewModel.reportPreview.zoom(1);
+    }
+</script>
+
+<style>
+    .dx-checkbox-icon {
+        width: 22px !important;
+        height: 22px !important;
+        border-radius: 2px !important;
+        border: 1px solid #000000 !important;
+        background-color: #d0d0d0 !important;
+    }
+
+    .dx-list-select-all-checkbox {
+        float: left !important;
+        margin: -1px 0 -3px 10px !important;
+        height: 20px !important;
+        border: 1px solid #333333 !important;
+    }
+</style>
+
+
+
+

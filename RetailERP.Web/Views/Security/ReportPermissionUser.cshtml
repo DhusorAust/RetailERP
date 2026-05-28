@@ -1,0 +1,86 @@
+﻿@{
+    var version = Guid.NewGuid().ToString();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section section_top
+{
+    <link href="~/custom/menuTree/dist/themes/default/style.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        localStorage.setItem("pageName", "@ViewBag.PageName");
+        localStorage.setItem("menuId", "@ViewBag.MenuId");
+    </script>
+}
+@{
+    var pageId = ViewBag.PageName + "-" + ViewBag.MenuId;
+    var divToolbarId = "divtoolbar" + pageId;
+    var toolbarId = "toolbar" + pageId;
+    var tblMasterId = "tbl" + pageId;
+    var tblChildId = "tblChild" + pageId;
+    var formId = "form" + pageId;
+    var divDetailsId = "divDetails" + pageId;
+}
+
+<div class="d-flex flex-column-fluid" id="@pageId">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-custom gutter-b example example-compact" style="padding-top:10px;">
+                    <div id="@divToolbarId">
+                        @*  Toolbar *@
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="@toolbarId">
+                                    <div class="btn btn-sm fw-bold btn-primary" style="border-radius: 0px;" id="btnNewList">
+                                        <i class="fa fa-plus"></i>&nbsp;User Role List
+                                    </div>
+                                    <div class="btn btn-sm fw-bold btn-secondary" style="border-radius: 0px;" id="btnEditList">
+                                        <i class="fa fa-list"></i>&nbsp;Add Menu Permission
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="@tblMasterId"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form" id="@formId">
+                        <input type="hidden" id="SUB_MENU_PERMISSION_ID" name="SUB_MENU_PERMISSION_ID" value="-1111" />  @* Primary Key *@
+
+                        <div class="card-body" id="@divDetailsId" style="display:none">
+                            <div class="card-header" style="padding:0px;">
+                                <h6 class="card-title" style="margin-bottom:5px;">General Information</h6>
+                            </div>
+
+                            <div class="row" style="padding-bottom:10px;">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div style="float:left; width:100%; overflow:auto; padding:10px; text-decoration:none; padding:10px; border:1px solid #ccc; border-radius:10px; margin-left:10px;height:500px; overflow:auto;"
+                                         id="tree" name="tree">
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-6"> </div>
+                                    <div class="col-lg-6 text-lg-right">
+                                        <div class="btn btn-secondary btn-custom120" id="btnBackToList">Back to List</div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section section_footer
+    { 
+    <script src="~/custom/menuTree/dist/jstree.min.js"></script>
+    <script src="~/custom/menuTree/dist/ui-tree.min.js"></script>
+    <script src="~/btl/security/ReportPermission.js?version=@version"></script>
+}
+

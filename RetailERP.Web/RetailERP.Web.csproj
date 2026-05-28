@@ -1,0 +1,376 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <LangVersion>preview</LangVersion>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Optimize>False</Optimize>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Optimize>False</Optimize>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>  
+    <Compile Remove="Report\**" />  
+    <Compile Remove="wwwroot\Files\employee\**" />  
+    <Compile Remove="wwwroot\theme\assets\plugins\global\fonts\fontawesome5.6.3\**" />  
+    <Content Remove="Report\**" />  
+    <Content Remove="wwwroot\Files\employee\**" />  
+    <EmbeddedResource Remove="Report\**" />  
+    <EmbeddedResource Remove="wwwroot\Files\employee\**" />   
+    <EmbeddedResource Remove="wwwroot\theme\assets\plugins\global\fonts\fontawesome5.6.3\**" />   
+    <None Remove="Report\**" />   
+    <None Remove="wwwroot\Files\employee\**" /> 
+    <None Remove="wwwroot\theme\assets\plugins\global\fonts\fontawesome5.6.3\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\rpt\ChemicalStoreController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.json" />
+    <Content Remove="Views\Setting\Bank.cshtml" />
+    <Content Remove="Views\Setting\BankBranch.cshtml" />
+    <Content Remove="Views\Setting\BuyerBankAccount.cshtml" />
+    <Content Remove="Views\Setting\INCIMaster.cshtml" />
+    <Content Remove="Views\Setting\IngredientMaster.cshtml" />
+    <Content Remove="Views\Setting\ItemCategory.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Reports\ChemicalStore\rpt_cs_Requirement.repx" />
+    <None Remove="Reports\Formulation\Rpt_FormulationDetails.repx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\ChemicalStore\rpt_cs_PurchaseRequisition.repx" />
+    <EmbeddedResource Include="Reports\ChemicalStore\rpt_cs_Requirement.repx" />
+    <EmbeddedResource Include="Reports\Formulation\Rpt_StabilityTest.repx" />
+    <EmbeddedResource Include="Reports\Formulation\Rpt_StabilityTest_File.repx" />
+    <EmbeddedResource Include="Reports\Formulation\Rpt_FormulationDetails_Sub.repx" />
+    <EmbeddedResource Include="Reports\Formulation\Rpt_FormulationDetails.repx" />
+    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub3_Shipper.repx" />
+    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub3_Secondary.repx" />
+    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub4.repx" />
+    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub3.repx" />
+    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub2.repx" />
+    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub.repx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="22.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Json" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ChemicalStore\rpt_cs_PurchaseRequisition.cs">
+      <DependentUpon>rpt_cs_PurchaseRequisition.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ChemicalStore\rpt_cs_PurchaseRequisition.Designer.cs">
+      <DependentUpon>rpt_cs_PurchaseRequisition.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ChemicalStore\rpt_cs_Requirement.cs">
+      <DependentUpon>rpt_cs_Requirement.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ChemicalStore\rpt_cs_Requirement.Designer.cs">
+      <DependentUpon>rpt_cs_Requirement.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_FormulationDetails.cs">
+      <DependentUpon>Rpt_FormulationDetails.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_FormulationDetails.Designer.cs">
+      <DependentUpon>Rpt_FormulationDetails.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_FormulationDetails_Sub.cs">
+      <DependentUpon>Rpt_FormulationDetails_Sub.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_FormulationDetails_Sub.Designer.cs">
+      <DependentUpon>Rpt_FormulationDetails_Sub.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_StabilityTest.cs">
+      <DependentUpon>Rpt_StabilityTest.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_StabilityTest.Designer.cs">
+      <DependentUpon>Rpt_StabilityTest.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_StabilityTest2.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_StabilityTest_File.cs">
+      <DependentUpon>Rpt_StabilityTest_File.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Formulation\Rpt_StabilityTest_File.Designer.cs">
+      <DependentUpon>Rpt_StabilityTest_File.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub.Designer.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub2.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub2.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub2.Designer.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub2.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub3.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3.Designer.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub3.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Secondary.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub3_Secondary.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Secondary.Designer.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub3_Secondary.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Shipper.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub3_Shipper.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Shipper.Designer.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub3_Shipper.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub4.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub4.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub4.Designer.cs">
+      <DependentUpon>rpt_BriefTemplate_Sub4.repx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.json" />
+    <None Include="Views\Setting\IngredientMaster.cshtml" />
+    <None Include="Views\Setting\INCIMaster.cshtml" />
+    <None Include="Views\Setting\BuyerBankAccount.cshtml" />
+    <None Include="Views\Setting\BankBranch.cshtml" />
+    <None Include="Views\Setting\Bank.cshtml" />
+    <None Include="wwwroot\Common\amcharts\amcharts.js" />
+    <None Include="wwwroot\Common\amcharts\funnel.js" />
+    <None Include="wwwroot\Common\amcharts\gantt.js" />
+    <None Include="wwwroot\Common\amcharts\gauge.js" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectBig.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectBigBlack.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectBigBlackH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectBigH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectSmall.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectSmallBlack.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectSmallBlackH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRectSmallH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundBig.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundBigBlack.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundBigBlackH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundBigH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundSmall.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundSmallBlack.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundSmallBlackH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\dragIconRoundSmallH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\eraserIcon.svg" />
+    <None Include="wwwroot\Common\amcharts\images\eraserIconH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\lens.svg" />
+    <None Include="wwwroot\Common\amcharts\images\lensWhite.svg" />
+    <None Include="wwwroot\Common\amcharts\images\pencilIcon.svg" />
+    <None Include="wwwroot\Common\amcharts\images\pencilIconH.svg" />
+    <None Include="wwwroot\Common\amcharts\images\xIcon.svg" />
+    <None Include="wwwroot\Common\amcharts\images\xIconH.svg" />
+    <None Include="wwwroot\Common\amcharts\lang\az.js" />
+    <None Include="wwwroot\Common\amcharts\lang\bg.js" />
+    <None Include="wwwroot\Common\amcharts\lang\cs.js" />
+    <None Include="wwwroot\Common\amcharts\lang\de.js" />
+    <None Include="wwwroot\Common\amcharts\lang\es.js" />
+    <None Include="wwwroot\Common\amcharts\lang\fi.js" />
+    <None Include="wwwroot\Common\amcharts\lang\fo.js" />
+    <None Include="wwwroot\Common\amcharts\lang\fr.js" />
+    <None Include="wwwroot\Common\amcharts\lang\hr.js" />
+    <None Include="wwwroot\Common\amcharts\lang\hu.js" />
+    <None Include="wwwroot\Common\amcharts\lang\id.js" />
+    <None Include="wwwroot\Common\amcharts\lang\is.js" />
+    <None Include="wwwroot\Common\amcharts\lang\it.js" />
+    <None Include="wwwroot\Common\amcharts\lang\ja.js" />
+    <None Include="wwwroot\Common\amcharts\lang\ko.js" />
+    <None Include="wwwroot\Common\amcharts\lang\lt.js" />
+    <None Include="wwwroot\Common\amcharts\lang\lv.js" />
+    <None Include="wwwroot\Common\amcharts\lang\mk.js" />
+    <None Include="wwwroot\Common\amcharts\lang\mn.js" />
+    <None Include="wwwroot\Common\amcharts\lang\mt.js" />
+    <None Include="wwwroot\Common\amcharts\lang\nl.js" />
+    <None Include="wwwroot\Common\amcharts\lang\no.js" />
+    <None Include="wwwroot\Common\amcharts\lang\pl.js" />
+    <None Include="wwwroot\Common\amcharts\lang\pt.js" />
+    <None Include="wwwroot\Common\amcharts\lang\ro.js" />
+    <None Include="wwwroot\Common\amcharts\lang\ru.js" />
+    <None Include="wwwroot\Common\amcharts\lang\rw.js" />
+    <None Include="wwwroot\Common\amcharts\lang\sk.js" />
+    <None Include="wwwroot\Common\amcharts\lang\sl.js" />
+    <None Include="wwwroot\Common\amcharts\lang\so.js" />
+    <None Include="wwwroot\Common\amcharts\lang\th.js" />
+    <None Include="wwwroot\Common\amcharts\lang\tr.js" />
+    <None Include="wwwroot\Common\amcharts\lang\uk.js" />
+    <None Include="wwwroot\Common\amcharts\lang\zh.js" />
+    <None Include="wwwroot\Common\amcharts\pie.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\animate\animate.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\animate\animate.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\animate\index.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\animate\LICENSE" />
+    <None Include="wwwroot\Common\amcharts\plugins\animate\README.md" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\dataloader.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\dataloader.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\examples\data\MSFT.csv" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\examples\data\MSFT_events.csv" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\examples\data\pie.csv" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\examples\data\serial.csv" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\examples\data\TXN.csv" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\index.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\lang\cs.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\lang\en.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\lang\fr.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\lang\lt.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\dataloader\readme.md" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\.gitignore" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\examples\export.config.advanced.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\examples\export.config.default.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\export.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\export.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\index.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\cs.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\de.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\en.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\es.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\fr.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\hu.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\it.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\ko.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\lt.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\pl.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\pt.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\tr.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\lang\zh.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\blob.js\blob.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\classList.js\classList.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\classList.js\classList.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\fabric.js\fabric.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\fabric.js\fabric.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\FileSaver.js\FileSaver.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\FileSaver.js\FileSaver.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\jszip\jszip.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\jszip\jszip.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\pdfmake\pdfmake.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\pdfmake\pdfmake.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\pdfmake\pdfmake.min.js.map" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\pdfmake\vfs_fonts.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\xlsx\LICENSE" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\xlsx\xlsx.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\xlsx\xlsx.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\libs\xlsx\xlsx.min.map" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\LICENSE" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\README.md" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\1.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\10.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\11.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\12.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\13.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\14.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\15.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\16.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\17.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\18.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\19.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\2.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\20.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\21.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\22.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\23.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\24.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\25.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\26.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\27.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\28.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\29.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\3.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\30.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\31.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\4.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\5.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\6.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\7.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\8.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\export\shapes\9.svg" />
+    <None Include="wwwroot\Common\amcharts\plugins\responsive\index.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\responsive\readme.md" />
+    <None Include="wwwroot\Common\amcharts\plugins\responsive\responsive.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\responsive\responsive.min.js" />
+    <None Include="wwwroot\Common\amcharts\plugins\responsive\responsive.min.js.map" />
+    <None Include="wwwroot\Common\amcharts\radar.js" />
+    <None Include="wwwroot\Common\amcharts\serial.js" />
+    <None Include="wwwroot\Common\amcharts\themes\black.js" />
+    <None Include="wwwroot\Common\amcharts\themes\chalk.js" />
+    <None Include="wwwroot\Common\amcharts\themes\dark.js" />
+    <None Include="wwwroot\Common\amcharts\themes\light.js" />
+    <None Include="wwwroot\Common\amcharts\themes\patterns.js" />
+    <None Include="wwwroot\Common\amcharts\xy.js" />
+    <None Include="wwwroot\Common\AnimationJs\ButtonAnimation\jquery.vnm.confettiButton.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\css\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Common\DayPilotScheduler\css\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Common\NewsTicker\jquery.ticker.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\daypilot-all.min.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\Index.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\jquery-1.8.1.min.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\jquery.message.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\PlanBoard.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\PlanBoardFixed.js" />
+    <None Include="wwwroot\Common\DayPilotScheduler\RND.js" />
+    <None Include="wwwroot\theme\assets\plugins\global\fonts\line_awesome\la-solid-900 %281%29.woff2" />
+    <None Include="wwwroot\theme\assets\plugins\global\fonts\line_awesome\la-solid-900.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RetailERP.Core\RetailERP.Core.csproj" />
+    <ProjectReference Include="..\RetailERP.Infrastructure\RetailERP.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Files\ExcelUpload\" />
+  </ItemGroup>
+
+</Project>
