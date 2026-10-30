@@ -57,15 +57,6 @@ namespace RetailERP.Web.Controllers.api.Common
         }
         #endregion
 
-        #region SMS Service
-
-        [HttpGet("GetSMSConfig")]
-        public async Task<IActionResult> GetSMSConfig()
-        {
-            return Ok(await _service.GetSMSConfig());
-        }
-        #endregion
-
         #region Ingredient
 
         [HttpGet("GetIngredientBySearch")]

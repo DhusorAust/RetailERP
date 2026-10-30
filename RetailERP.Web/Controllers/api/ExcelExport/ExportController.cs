@@ -34,27 +34,6 @@ namespace RetailERP.Web.Controllers.api.ExcelExport
             var userId = allMenu.UserList[0].UserID;
             return Ok(await _service.GetNew(userId));
         }
-
-        [HttpPost("GetExportExcelData")]
-        public async Task<IActionResult> GetExportExcelData([FromForm] ExcelExportParam reportParemaeters)
-        {
-            var base64 = "";
-            try
-            {
-                var data =await  _service.GetExportExcelData(reportParemaeters);
-                if (data == null || data.Rows.Count == 0)
-                {
-                    return NotFound("No data found to export.");
-                }
-
-                var base64Excel = await _helperService.ExcelFileConvertBase64String(data);
-                return Ok(base64Excel);
-
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
+        
     }
 }

@@ -1,4 +1,3 @@
-using RetailERP.Core.Chem.SmsService;
 using RetailERP.Core.Common;
 using RetailERP.Infrastructure.Chem.Interfaces.Common;
 using ClosedXML.Excel;
@@ -166,15 +165,7 @@ namespace RetailERP.Infrastructure.Chem.Services.Common
         }
         #endregion Product  
 
-        #region Others
-        public async Task<SMSConfig> GetSMSConfig()
-        {
-            SMSConfig sMSConfig = new();
-            sMSConfig.Username = "pdenim";
-            sMSConfig.Password = "Dhaka@5599";
-            sMSConfig.From = "PDL";
-            return sMSConfig;
-        } 
+        #region Others 
         public async Task<string> ExcelFileConvertBase64String(DataTable dataTable)
         {
             try

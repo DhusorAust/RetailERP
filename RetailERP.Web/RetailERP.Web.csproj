@@ -48,32 +48,6 @@
 
   <ItemGroup>
     <Content Remove="appsettings.json" />
-    <Content Remove="Views\Setting\Bank.cshtml" />
-    <Content Remove="Views\Setting\BankBranch.cshtml" />
-    <Content Remove="Views\Setting\BuyerBankAccount.cshtml" />
-    <Content Remove="Views\Setting\INCIMaster.cshtml" />
-    <Content Remove="Views\Setting\IngredientMaster.cshtml" />
-    <Content Remove="Views\Setting\ItemCategory.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Reports\ChemicalStore\rpt_cs_Requirement.repx" />
-    <None Remove="Reports\Formulation\Rpt_FormulationDetails.repx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Reports\ChemicalStore\rpt_cs_PurchaseRequisition.repx" />
-    <EmbeddedResource Include="Reports\ChemicalStore\rpt_cs_Requirement.repx" />
-    <EmbeddedResource Include="Reports\Formulation\Rpt_StabilityTest.repx" />
-    <EmbeddedResource Include="Reports\Formulation\Rpt_StabilityTest_File.repx" />
-    <EmbeddedResource Include="Reports\Formulation\Rpt_FormulationDetails_Sub.repx" />
-    <EmbeddedResource Include="Reports\Formulation\Rpt_FormulationDetails.repx" />
-    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub3_Shipper.repx" />
-    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub3_Secondary.repx" />
-    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub4.repx" />
-    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub3.repx" />
-    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub2.repx" />
-    <EmbeddedResource Include="Reports\Marketing\rpt_BriefTemplate_Sub.repx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -92,93 +66,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Reports\ChemicalStore\rpt_cs_PurchaseRequisition.cs">
-      <DependentUpon>rpt_cs_PurchaseRequisition.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\ChemicalStore\rpt_cs_PurchaseRequisition.Designer.cs">
-      <DependentUpon>rpt_cs_PurchaseRequisition.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\ChemicalStore\rpt_cs_Requirement.cs">
-      <DependentUpon>rpt_cs_Requirement.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\ChemicalStore\rpt_cs_Requirement.Designer.cs">
-      <DependentUpon>rpt_cs_Requirement.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_FormulationDetails.cs">
-      <DependentUpon>Rpt_FormulationDetails.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_FormulationDetails.Designer.cs">
-      <DependentUpon>Rpt_FormulationDetails.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_FormulationDetails_Sub.cs">
-      <DependentUpon>Rpt_FormulationDetails_Sub.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_FormulationDetails_Sub.Designer.cs">
-      <DependentUpon>Rpt_FormulationDetails_Sub.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_StabilityTest.cs">
-      <DependentUpon>Rpt_StabilityTest.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_StabilityTest.Designer.cs">
-      <DependentUpon>Rpt_StabilityTest.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_StabilityTest2.cs">
-      <SubType>XtraReport</SubType>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_StabilityTest_File.cs">
-      <DependentUpon>Rpt_StabilityTest_File.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Formulation\Rpt_StabilityTest_File.Designer.cs">
-      <DependentUpon>Rpt_StabilityTest_File.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate.cs">
-      <SubType>XtraReport</SubType>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub.Designer.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub2.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub2.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub2.Designer.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub2.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub3.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3.Designer.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub3.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Secondary.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub3_Secondary.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Secondary.Designer.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub3_Secondary.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Shipper.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub3_Shipper.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub3_Shipper.Designer.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub3_Shipper.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub4.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub4.repx</DependentUpon>
-    </Compile>
-    <Compile Update="Reports\Marketing\rpt_BriefTemplate_Sub4.Designer.cs">
-      <DependentUpon>rpt_BriefTemplate_Sub4.repx</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <None Include="appsettings.json" />
-    <None Include="Views\Setting\IngredientMaster.cshtml" />
-    <None Include="Views\Setting\INCIMaster.cshtml" />
-    <None Include="Views\Setting\BuyerBankAccount.cshtml" />
-    <None Include="Views\Setting\BankBranch.cshtml" />
-    <None Include="Views\Setting\Bank.cshtml" />
     <None Include="wwwroot\Common\amcharts\amcharts.js" />
     <None Include="wwwroot\Common\amcharts\funnel.js" />
     <None Include="wwwroot\Common\amcharts\gantt.js" />
@@ -370,6 +261,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\api\Setting\" />
+    <Folder Include="Reports\" />
+    <Folder Include="Views\Setting\" />
     <Folder Include="wwwroot\Files\ExcelUpload\" />
   </ItemGroup>
 
