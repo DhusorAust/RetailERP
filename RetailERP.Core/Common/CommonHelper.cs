@@ -9,7 +9,7 @@ namespace RetailERP.Core.Common
     public static class AppGlobalFields
     {
         public const string NEW = "<<--System Value-->>";
-        public const string ProjectID = "5";
+        public const string ProjectID = "1";
         public const string AdminMessage = "Please contact with IT department.";
     }
     public static class DBSource
